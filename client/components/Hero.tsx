@@ -1,9 +1,10 @@
 "use client"
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
+import { Sparkles, ArrowRight, Play } from "lucide-react";
 
-const fadeUp = {
+const fadeUp: Variants = {
     hidden: { opacity: 0, y: 32 },
-    visible: (delay = 0) => ({
+    visible: (delay: number = 0) => ({
         opacity: 1,
         y: 0,
         transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1], delay },
@@ -23,8 +24,7 @@ export default function HeroSection() {
                     transition={{ duration: 2, ease: "easeOut" }}
                     className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full"
                     style={{
-                        background:
-                            "radial-gradient(circle, rgba(79,126,255,0.18) 0%, transparent 70%)",
+                        background: "radial-gradient(circle, rgba(79,126,255,0.18) 0%, transparent 70%)",
                     }}
                 />
                 {/* Top-left accent */}
@@ -34,8 +34,7 @@ export default function HeroSection() {
                     transition={{ duration: 2.5, delay: 0.5 }}
                     className="absolute -top-32 -left-32 w-[400px] h-[400px] rounded-full"
                     style={{
-                        background:
-                            "radial-gradient(circle, rgba(79,126,255,0.12) 0%, transparent 70%)",
+                        background: "radial-gradient(circle, rgba(79,126,255,0.12) 0%, transparent 70%)",
                         filter: "blur(60px)",
                     }}
                 />
@@ -46,8 +45,7 @@ export default function HeroSection() {
                     transition={{ duration: 2.5, delay: 0.8 }}
                     className="absolute -bottom-20 -right-20 w-[350px] h-[350px] rounded-full"
                     style={{
-                        background:
-                            "radial-gradient(circle, rgba(120,80,255,0.15) 0%, transparent 70%)",
+                        background: "radial-gradient(circle, rgba(120,80,255,0.15) 0%, transparent 70%)",
                         filter: "blur(60px)",
                     }}
                 />
@@ -75,10 +73,12 @@ export default function HeroSection() {
                     className="inline-flex items-center gap-2 bg-[#4f7eff]/10 border border-[#4f7eff]/40 rounded-full px-4 py-1.5 text-[13px] text-[#4f7eff] font-medium mb-6 backdrop-blur-sm"
                 >
                     <motion.span
-                        className="w-2 h-2 rounded-full bg-[#4f7eff] inline-block"
                         animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
                         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    />
+                        className="flex items-center"
+                    >
+                        <Sparkles size={12} />
+                    </motion.span>
                     Powered by GPT-4o
                 </motion.div>
 
@@ -88,16 +88,14 @@ export default function HeroSection() {
                     variants={fadeUp}
                     initial="hidden"
                     animate="visible"
-                    className="text-5xl sm:text-6xl md:text-7xl font-extrabold max-w-[800px] leading-[1.08] tracking-tight"
+                    className="text-3xl sm:text-6xl max-w-[750px] leading-[1.08] tracking-tight"
                     style={{
                         background: "linear-gradient(135deg, #F0F4FF 30%, #4f7eff 100%)",
                         WebkitBackgroundClip: "text",
                         WebkitTextFillColor: "transparent",
                     }}
                 >
-                    Manage Tasks Smarter{" "}
-                    <span className="block">with AI That Works</span>
-                    <span className="block">For You</span>
+                    Manage Tasks Smarter with AI That Works For You
                 </motion.h1>
 
                 {/* Subtext */}
@@ -130,9 +128,7 @@ export default function HeroSection() {
                         {/* Shimmer */}
                         <span className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
                         Get Started Free
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="ml-1">
-                            <path d="M3 8h10M9 4l4 4-4 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
+                        <ArrowRight size={16} />
                     </motion.button>
 
                     <motion.button
@@ -144,11 +140,9 @@ export default function HeroSection() {
                         <motion.span
                             animate={{ scale: [1, 1.15, 1] }}
                             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                            className="flex items-center"
                         >
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <circle cx="8" cy="8" r="7" stroke="#4f7eff" strokeWidth="1.2" />
-                                <path d="M6.5 5.5l4 2.5-4 2.5V5.5z" fill="#4f7eff" />
-                            </svg>
+                            <Play size={14} fill="#4f7eff" stroke="#4f7eff" />
                         </motion.span>
                         Watch Demo
                     </motion.button>
