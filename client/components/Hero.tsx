@@ -3,12 +3,12 @@ export default function HeroSection() {
 
     return (
         <header className="text-[#F0F4FF] h-screen overflow-x-hidden relative flex items-center justify-center">
-            <section className="relative z-10 flex flex-col items-center justify-center text-center px-6 pt-24 pb-20">
+            <section className="relative z-10 flex flex-col items-center justify-center text-center px-6 pt-32 pb-20">
 
                 {/* Badge */}
                 <div
-                    className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 rounded-full px-4 py-1.5 text-[13px] text-blue-300 font-medium mb-7" >
-                    <span className="badge-dot w-2 h-2 rounded-full bg-blue-500 inline-block" />
+                    className="inline-flex items-center gap-2 bg-(--primary)/20 border border-(--primary) rounded-full px-4 py-1.5 text-[13px] text-(--primary) font-medium mb-7" >
+                    <span className="badge-dot w-2 h-2 rounded-full bg- inline-block" />
                     Powered by GPT-4o · Now in Public Beta
                 </div>
 
