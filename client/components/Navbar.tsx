@@ -17,7 +17,7 @@ function Navbar() {
     return (
         <nav className="shadow-md relative z-50 bg-[#000310]">
             {/* Desktop Navbar */}
-            <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div className="max-w-7xl md:px-24 px-6 py-4 flex items-center justify-between">
                 {/* Logo */}
                 <a href="/" className="text-[#656FE4] text-2xl font-extrabold tracking-widest flex justify-center items-center gap-2">
                 <Image src="/logo.png" width={40} height={40} className='rounded' alt="logo"/>
