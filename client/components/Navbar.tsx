@@ -6,7 +6,7 @@ function Navbar() {
     return (
         <nav className='bg-[#000310] w-full h-20 flex items-center justify-between px-30 py-4'>
             <div>
-                <Image src="" alt="logo" />
+                <Image src="/logo.png" alt="logo" />
                 <h1>Taskify</h1>
             </div>
             <ul className='w-full flex justify-center items-center gap-8'>
