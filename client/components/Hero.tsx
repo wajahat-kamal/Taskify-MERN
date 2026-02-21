@@ -29,7 +29,7 @@ export default function HeroSection() {
                 <div
                     className="flex gap-3 mt-6 flex-wrap justify-center" >
                     <button
-                        className="flex items-center gap-2 bg-(--color-primary) hover:bg-blue-400 text-white font-bold px-8 py-3.5 rounded-xl text-[15px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(79,126,255,0.5)]"
+                        className="flex items-center gap-2 bg-(--color-primary) hover:bg-[#000310] text-white font-bold px-8 py-3.5 rounded-xl text-[15px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(79,126,255,0.5)]"
                         style={{ boxShadow: "0 0 30px rgba(79,126,255,0.4)" }}
                     >
                         Get Started Free
@@ -42,28 +42,6 @@ export default function HeroSection() {
                         Watch Demo
                     </button>
                 </div>
-
-                {/* Social proof */}
-                <div className="flex items-center gap-4 mt-9 flex-wrap justify-center">
-                    <div className="flex">
-                        {[["bg-blue-500", "AK"], ["bg-violet-500", "MR"], ["bg-emerald-500", "SC"], ["bg-yellow-500", "JP"]].map(([bg, init], i) => (
-                            <div key={i} className={`w-8 h-8 rounded-full border-2 border-[#080B12] ${bg} flex items-center justify-center text-[10px] font-bold text-white ${i > 0 ? "-ml-2.5" : ""}`}>
-                                {init}
-                            </div>
-                        ))}
-                    </div>
-                    <div className="text-left">
-                        <div className="text-yellow-400 text-xs tracking-widest">★★★★★</div>
-                        <div className="text-xs text-[#6B7A99] mt-0.5">Loved by <strong className="text-[#F0F4FF]">12,000+</strong> teams</div>
-                    </div>
-                    <div className="w-px h-9 bg-white/10" />
-                    <div className="text-left">
-                        <div className="text-sm font-semibold">No credit card</div>
-                        <div className="text-xs text-[#6B7A99]">Free 14-day trial</div>
-                    </div>
-                </div>
-
-
 
             </section>
         </header>
