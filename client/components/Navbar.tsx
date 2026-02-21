@@ -15,7 +15,7 @@ function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <nav className="shadow-md relative z-50">
+        <nav className="shadow-md  w-full absolute top-0 right-0 z-50">
             {/* Desktop Navbar */}
             <div className="max-w-7xl md:px-24 px-6 py-4 flex items-center justify-between">
                 {/* Logo */}
@@ -41,7 +41,7 @@ function Navbar() {
                 {/* Desktop Signup Button */}
                 <a
                     href="/signup"
-                    className="hidden md:inline-block bg-[#656FE4] text-white font-semibold px-5 py-2 rounded-full hover:bg-[#000310] transition"
+                    className="hidden md:inline-block bg-[#656FE4] text-white px-5 py-2 rounded-full border-2 hover:text-[#656FE4] hover:bg-[#000310] border-[#656FE4] transition"
                 >
                     Signup
                 </a>

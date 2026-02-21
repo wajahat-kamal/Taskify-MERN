@@ -2,10 +2,8 @@
 export default function HeroSection() {
 
     return (
-        <header className="text-[#F0F4FF] overflow-x-hidden relative">
-
-            {/* ── HERO ── */}
-            <section className="relative z-10 flex flex-col items-center justify-center text-center px-6 pt-16 pb-20">
+        <header className="text-[#F0F4FF] h-screen overflow-x-hidden relative flex items-center justify-center">
+            <section className="relative z-10 flex flex-col items-center justify-center text-center px-6 pt-24 pb-20">
 
                 {/* Badge */}
                 <div
@@ -22,7 +20,7 @@ export default function HeroSection() {
                 </h1>
 
                 {/* Subtext */}
-                <p className="mt-5 text-[#6B7A99] max-w-[540px] leading-[1.75] text-lg">
+                <p className="mt-5 text-[#6B7A99] max-w-[540px] leading-[1.75] text-md">
                     Taskify learns your workflow, auto-assigns priorities, and keeps your
                     team perfectly in sync — so you can focus on what actually matters.
                 </p>
