@@ -3,6 +3,7 @@
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 function Navbar() {
     const nav_items = [
@@ -15,12 +16,16 @@ function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <nav className="shadow-md  w-full absolute top-0 right-0 z-50">
+        <motion.nav
+            initial={{ opacity: 0, y: 0 }}
+            whileInView={{ opacity: 1, y: 10 }}
+            transition={{duration: 0.4, ease: "easeIn"}}
+            className="shadow-md  w-full absolute top-0 right-0 z-50">
             {/* Desktop Navbar */}
             <div className="max-w-7xl md:px-24 px-6 py-4 flex items-center justify-between">
                 {/* Logo */}
                 <a href="/" className="text-[#656FE4] text-2xl font-extrabold tracking-widest flex justify-center items-center gap-2">
-                <Image src="/logo.png" width={40} height={40} className='rounded' alt="logo"/>
+                    <Image src="/logo.png" width={40} height={40} className='rounded' alt="logo" />
                     TASKIFY
                 </a>
 
@@ -59,7 +64,7 @@ function Navbar() {
             {/* Mobile Sidebar / Dropdown */}
             <div
                 className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
-            }`} >
+                    }`} >
                 <ul className="flex flex-col gap-4 px-6 py-6 bg-[#040b29]">
                     {nav_items.map((item, index) => (
                         <li key={index}>
@@ -85,7 +90,7 @@ function Navbar() {
                     </li>
                 </ul>
             </div>
-        </nav>
+        </motion.nav>
     );
 }
 
