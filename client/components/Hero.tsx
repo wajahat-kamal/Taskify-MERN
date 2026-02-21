@@ -88,7 +88,7 @@ export default function HeroSection() {
                     variants={fadeUp}
                     initial="hidden"
                     animate="visible"
-                    className="text-3xl sm:text-6xl max-w-[750px] leading-[1.08] tracking-tight"
+                    className="text-4xl sm:text-6xl max-w-[750px] leading-[1.08] tracking-tight"
                     style={{
                         background: "linear-gradient(135deg, #F0F4FF 30%, #4f7eff 100%)",
                         WebkitBackgroundClip: "text",
