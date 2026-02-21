@@ -7,7 +7,7 @@ export default function HeroSection() {
 
                 {/* Badge */}
                 <div
-                    className="inline-flex items-center gap-2 bg-(--color-primary)/20 border border-(--color-primary) rounded-full px-4 py-1.5 text-[13px] text-(--color-primary) font-medium mb-7" >
+                    className="inline-flex items-center gap-2 bg-(--color-primary)/20 border border-(--color-primary) rounded-full px-4 py-1.5 text-[13px] text-(--color-primary) font-medium mb-6" >
                     <span className="badge-dot w-2 h-2 rounded-full bg-(--color-primary) inline-block" />
                     Powered by GPT-4o
                 </div>
@@ -20,19 +20,19 @@ export default function HeroSection() {
                 </h1>
 
                 {/* Subtext */}
-                <p className="mt-5 text-[#6B7A99] max-w-[540px] leading-[1.75] text-md">
+                <p className="mt-3 text-[#6B7A99] max-w-[540px] leading-[1.75] text-md">
                     Taskify learns your workflow, auto-assigns priorities, and keeps your
                     team perfectly in sync — so you can focus on what actually matters.
                 </p>
 
                 {/* CTA Buttons */}
                 <div
-                    className="flex gap-3 mt-10 flex-wrap justify-center" >
+                    className="flex gap-3 mt-6 flex-wrap justify-center" >
                     <button
                         className="flex items-center gap-2 bg-blue-500 hover:bg-blue-400 text-white font-bold px-8 py-3.5 rounded-xl text-[15px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(79,126,255,0.5)]"
                         style={{ boxShadow: "0 0 30px rgba(79,126,255,0.4)" }}
                     >
-                        🚀 Get Started Free
+                        Get Started Free
                     </button>
                     <button className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-[#F0F4FF] font-medium px-8 py-3.5 rounded-xl text-[15px] transition-all duration-200 hover:-translate-y-0.5">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
