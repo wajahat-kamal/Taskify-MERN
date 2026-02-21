@@ -15,7 +15,7 @@ function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <nav className="shadow-md relative z-50 bg-[#000310]">
+        <nav className="shadow-md relative z-50">
             {/* Desktop Navbar */}
             <div className="max-w-7xl md:px-24 px-6 py-4 flex items-center justify-between">
                 {/* Logo */}

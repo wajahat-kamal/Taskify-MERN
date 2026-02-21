@@ -2,7 +2,7 @@
 export default function HeroSection() {
 
     return (
-        <header className="bg-[#000310] text-[#F0F4FF] min-h-screen overflow-x-hidden relative">
+        <header className=" text-[#F0F4FF] min-h-screen overflow-x-hidden relative">
 
             {/* ── HERO ── */}
             <section className="relative z-10 flex flex-col items-center justify-center text-center px-6 pt-16 pb-20 min-h-screen">
