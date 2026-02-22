@@ -45,26 +45,25 @@ export default function AboutSection() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
                     {features.map((feature, i) => (
                         <motion.div
-                            key={feature.title}
                             variants={fadeUp}
                             initial="hidden"
                             whileInView="visible"
-                            viewport={{ once: true }}
                             custom={0.1 * i}
                             whileHover={{ y: -6, scale: 1.02 }}
                             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                            className="group relative bg-white/3 border border-white/8 hover:border-(--color-primary)/40 rounded-2xl p-6 backdrop-blur-sm transition-colors duration-300 cursor-default"
+                            key={feature.title}
+                            className="relative group bg-white/3 border border-white/8 hover:border-(--color-primary)/40 rounded-2xl p-6 backdrop-blur-sm  transition-colors duration-300 cursor-default"
                         >
-                            {/* Card glow on hover */}
                             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                                 style={{ background: "radial-gradient(circle at 50% 0%, rgba(79,126,255,0.08), transparent 70%)" }}
                             />
                             <div className="relative z-10">
-                                <div className="w-10 h-10 rounded-xl bg-(--color-primary)/10 border border-(--color-primary)/20 flex items-center justify-center mb-4">
+
+                                <div className="flex justify-center items-center w-10 h-10 bg-(--color-primary)/10 rounded-xl border border-(--color-primary)/20 mb-4">
                                     <feature.icon size={18} className="text-(--color-primary)" />
                                 </div>
-                                <h3 className="text-[#F0F4FF] font-semibold text-[15px] mb-2">{feature.title}</h3>
-                                <p className="text-[#6B7A99] text-sm leading-[1.7]">{feature.desc}</p>
+                                <h3 className="font-semibold text-base text-[#F0F4FF] mb-2">{feature.title}</h3>
+                                <p className="text-[#6B7A99] leading-[1.7] text-sm">{feature.desc}</p>
                             </div>
                         </motion.div>
                     ))}
@@ -88,14 +87,7 @@ export default function AboutSection() {
                             transition={{ duration: 0.6, delay: 0.1 * i, ease: [0.22, 1, 0.36, 1] }}
                             className="bg-[#00030f] flex flex-col items-center justify-center py-10 gap-1"
                         >
-                            <span
-                                className="text-4xl font-extrabold tracking-tight"
-                                style={{
-                                    background: "linear-gradient(135deg, #F0F4FF 40%, #4f7eff 100%)",
-                                    WebkitBackgroundClip: "text",
-                                    WebkitTextFillColor: "transparent",
-                                }}
-                            >
+                            <span className="text-4xl font-extrabold tracking-tight" >
                                 {stat.value}
                             </span>
                             <span className="text-[#6B7A99] text-sm">{stat.label}</span>

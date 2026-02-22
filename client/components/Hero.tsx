@@ -15,7 +15,6 @@ export const fadeUp: Variants = {
 export default function HeroSection() {
     return (
         <header className="text-[#F0F4FF] min-h-screen overflow-x-hidden relative flex items-center justify-center bg-[#00030f]">
-
             {/* ── Ambient background glows ── */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
                 <motion.div
