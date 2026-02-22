@@ -1,6 +1,6 @@
 "use client"
 import { motion, Variants } from "framer-motion";
-import { Twitter, Github, Linkedin, Mail, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 const fadeUp: Variants = {
     hidden: { opacity: 0, y: 24 },
@@ -16,13 +16,6 @@ const links = {
     Company: ["About Us", "Careers", "Blog", "Press Kit"],
     Legal: ["Privacy Policy", "Terms of Service", "Cookie Policy", "Security"],
 };
-
-const socials = [
-    { icon: Twitter, label: "Twitter", href: "#" },
-    { icon: Github, label: "GitHub", href: "#" },
-    { icon: Linkedin, label: "LinkedIn", href: "#" },
-    { icon: Mail, label: "Email", href: "#" },
-];
 
 export default function Footer() {
     return (
