@@ -2,7 +2,7 @@
 import { motion, Variants } from "framer-motion";
 import { Sparkles, ArrowRight, Play } from "lucide-react";
 
-const fadeUp: Variants = {
+export const fadeUp: Variants = {
     hidden: { opacity: 0, y: 32 },
     visible: (delay: number = 0) => ({
         opacity: 1,

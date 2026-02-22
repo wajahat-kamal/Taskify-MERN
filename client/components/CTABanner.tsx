@@ -1,15 +1,7 @@
 "use client"
-import { motion, Variants } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
-
-const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 32 },
-    visible: (delay: number = 0) => ({
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1], delay },
-    }),
-};
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { fadeUp } from "./Hero";
 
 export default function CTABanner() {
     return (
