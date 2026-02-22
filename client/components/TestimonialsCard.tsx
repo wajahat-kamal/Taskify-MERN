@@ -3,6 +3,8 @@ import { Quote, Star } from "lucide-react";
 import { motion } from "framer-motion";
 
 function TestimonialCard({ testimonial, delay }: { testimonial: Testimonial; delay: number }) {
+
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -40,7 +42,9 @@ function TestimonialCard({ testimonial, delay }: { testimonial: Testimonial; del
                         className="w-9 h-9 rounded-full flex items-center justify-center text-[11px] font-bold text-white shrink-0"
                         style={{ backgroundColor: testimonial.color + "33", border: `1px solid ${testimonial.color}55` }}
                     >
-                        <span style={{ color: testimonial.color }}>{testimonial.avatar}</span>
+                        <span style={{ color: testimonial.color }}>
+                            {testimonial.name.split(" ").map((word) => word[0]).join("")}
+                        </span>
                     </div>
                     <div>
                         <p className="text-[#F0F4FF] text-sm font-semibold leading-tight">{testimonial.name}</p>
