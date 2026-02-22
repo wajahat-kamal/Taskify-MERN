@@ -7,10 +7,10 @@ export default function AboutSection() {
     return (
         <section
             id="about"
-            className="relative bg-[#00030f] text-[#F0F4FF] overflow-hidden py-16 px-6"
+            className="relative text-[#F0F4FF] overflow-hidden py-16 px-6"
         >
             <div
-                className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px opacity-20"
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-0.5 opacity-20"
                 style={{ background: "linear-gradient(90deg, transparent, #4f7eff, transparent)" }}
             />
 
@@ -24,11 +24,6 @@ export default function AboutSection() {
                         viewport={{ once: true }}
                         custom={0.1}
                         className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.1] max-w-[700px] mx-auto"
-                        style={{
-                            background: "linear-gradient(135deg, #F0F4FF 30%, #4f7eff 100%)",
-                            WebkitBackgroundClip: "text",
-                            WebkitTextFillColor: "transparent",
-                        }}
                     >
                         Built for teams that move fast
                     </motion.h2>
@@ -58,15 +53,15 @@ export default function AboutSection() {
                             custom={0.1 * i}
                             whileHover={{ y: -6, scale: 1.02 }}
                             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                            className="group relative bg-white/3 border border-white/8 hover:border-[#4f7eff]/40 rounded-2xl p-6 backdrop-blur-sm transition-colors duration-300 cursor-default"
+                            className="group relative bg-white/3 border border-white/8 hover:border-(--color-primary)/40 rounded-2xl p-6 backdrop-blur-sm transition-colors duration-300 cursor-default"
                         >
                             {/* Card glow on hover */}
                             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                                 style={{ background: "radial-gradient(circle at 50% 0%, rgba(79,126,255,0.08), transparent 70%)" }}
                             />
                             <div className="relative z-10">
-                                <div className="w-10 h-10 rounded-xl bg-[#4f7eff]/10 border border-[#4f7eff]/20 flex items-center justify-center mb-4">
-                                    <feature.icon size={18} className="text-[#4f7eff]" />
+                                <div className="w-10 h-10 rounded-xl bg-(--color-primary)/10 border border-(--color-primary)/20 flex items-center justify-center mb-4">
+                                    <feature.icon size={18} className="text-(--color-primary)" />
                                 </div>
                                 <h3 className="text-[#F0F4FF] font-semibold text-[15px] mb-2">{feature.title}</h3>
                                 <p className="text-[#6B7A99] text-sm leading-[1.7]">{feature.desc}</p>
