@@ -10,7 +10,7 @@ function TestimonialCard({ testimonial, delay }: { testimonial: Testimonial; del
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -6, scale: 1.02 }}
-            className="group relative bg-white/3 border border-white/8 hover:border-[#4f7eff]/40 rounded-2xl p-6 backdrop-blur-sm transition-colors duration-300 flex flex-col gap-4 cursor-default"
+            className="group relative bg-white/3 border border-white/8 hover:border-(--color-primary)/40 rounded-2xl p-6 backdrop-blur-sm transition-colors duration-300 flex flex-col gap-4 cursor-default"
         >
             {/* Hover glow */}
             <div
@@ -21,7 +21,7 @@ function TestimonialCard({ testimonial, delay }: { testimonial: Testimonial; del
             <div className="relative z-10 flex flex-col gap-4">
                 {/* Quote icon + stars */}
                 <div className="flex items-center justify-between">
-                    <Quote size={20} className="text-[#4f7eff] opacity-60" />
+                    <Quote size={20} className="text-(--color-primary) opacity-60" />
                     <div className="flex gap-0.5">
                         {Array.from({ length: testimonial.stars }).map((_, i) => (
                             <Star key={i} size={13} className="text-[#f59e0b] fill-[#f59e0b]" />
