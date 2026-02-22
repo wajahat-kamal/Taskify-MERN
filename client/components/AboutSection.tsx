@@ -1,37 +1,8 @@
 "use client"
 import { motion } from "framer-motion";
-import { Brain, Zap, Users, BarChart3 } from "lucide-react";
 import { fadeUp } from "./Hero";
+import { features } from "@/data/indexData";
 
-const features = [
-    {
-        icon: Brain,
-        title: "AI-Powered Planning",
-        desc: "Taskify understands your goals and automatically breaks them into actionable tasks with smart deadlines.",
-    },
-    {
-        icon: Zap,
-        title: "Instant Prioritization",
-        desc: "Our engine ranks your backlog in real time so your team always knows what to tackle next.",
-    },
-    {
-        icon: Users,
-        title: "Seamless Collaboration",
-        desc: "Assign, comment, and track progress together — no more status-update meetings.",
-    },
-    {
-        icon: BarChart3,
-        title: "Deep Analytics",
-        desc: "Visual dashboards surface bottlenecks and celebrate wins so you can continuously improve.",
-    },
-];
-
-const stats = [
-    { value: "12K+", label: "Teams worldwide" },
-    { value: "98%", label: "On-time delivery" },
-    { value: "3×", label: "Faster execution" },
-    { value: "4.9★", label: "Average rating" },
-];
 
 export default function AboutSection() {
     return (
