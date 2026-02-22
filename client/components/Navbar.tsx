@@ -8,8 +8,8 @@ import { motion } from 'framer-motion';
 function Navbar() {
     const nav_items = [
         { name: "Home", href: "/" },
-        { name: "About", href: "#about" },
-        { name: "Pricing", href: "#menu" },
+        { name: "About", href: "/#about" },
+        { name: "Testimonials", href: "/#testimonials" },
         { name: "Products", href: "#reviews" },
     ];
 
