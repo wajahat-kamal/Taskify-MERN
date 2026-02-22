@@ -95,9 +95,9 @@ export default function CTABanner() {
                                 whileInView="visible"
                                 viewport={{ once: true }}
                                 custom={0.5}
-                                className="mt-6 text-[#6B7A99] text-xs"
+                                className="mt-6 text-[#6B7A99] text-sm"
                             >
-                                Free 14-day trial · No setup fees · Cancel anytime
+                                Free trial · No setup fees 
                             </motion.p>
 
                         </div>
