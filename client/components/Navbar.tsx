@@ -19,7 +19,8 @@ function Navbar() {
         <motion.nav
             initial={{ opacity: 0, y: 0 }}
             whileInView={{ opacity: 1, y: 10 }}
-            transition={{duration: 0.4, ease: "easeIn"}}
+            transition={{ duration: 0.4, ease: "easeIn" }}
+            viewport={{ once: true }}
             className="shadow-md  w-full absolute top-0 right-0 z-50">
             {/* Desktop Navbar */}
             <div className="max-w-7xl md:px-24 px-6 py-4 flex items-center justify-between">
