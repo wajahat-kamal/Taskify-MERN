@@ -100,7 +100,7 @@ export default function Footer() {
                             <ul className="flex flex-col gap-3">
                                 {items.map((item) => (
                                     <li key={item}>
-                                        
+                                        <a
                                             href="#"
                                             className="text-[#6B7A99] text-sm hover:text-[#4f7eff] transition-colors duration-200"
                                         >
