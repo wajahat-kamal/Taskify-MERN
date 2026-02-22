@@ -1,15 +1,7 @@
 "use client"
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { Brain, Zap, Users, BarChart3 } from "lucide-react";
-
-const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 32 },
-    visible: (delay: number = 0) => ({
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1], delay },
-    }),
-};
+import { fadeUp } from "./Hero";
 
 const features = [
     {
