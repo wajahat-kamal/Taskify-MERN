@@ -64,7 +64,7 @@ export default function HeroSection() {
                     variants={fadeUp}
                     initial="hidden"
                     animate="visible"
-                    className="text-4xl sm:text-6xl max-w-[750px] leading-[1.08] tracking-tight"
+                    className="text-3xl sm:text-6xl max-w-[750px] leading-[1.08] tracking-tight"
                     style={{
                         background: "linear-gradient(135deg, #F0F4FF 30%, #4f7eff 100%)",
                         WebkitBackgroundClip: "text",
@@ -80,7 +80,7 @@ export default function HeroSection() {
                     variants={fadeUp}
                     initial="hidden"
                     animate="visible"
-                    className="mt-5 text-[#6B7A99] max-w-[520px] leading-[1.8] text-base"
+                    className="mt-5 text-[#6B7A99] max-w-[520px] leading-[1.8] text-xs sm:text-base"
                 >
                     Taskify learns your workflow, auto-assigns priorities, and keeps your
                     team perfectly in sync — so you can focus on what actually matters.
