@@ -1,7 +1,7 @@
 import AboutSection from "@/components/AboutSection";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
-import TestimonialsSection from "@/components/Testimonials";
+import Testimonials from "@/components/Testimonials";
 import Image from "next/image";
 
 export default function Home() {
@@ -10,7 +10,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <AboutSection/>
-      <TestimonialsSection/>
+      <Testimonials/>
     </div>
   );
 }

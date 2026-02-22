@@ -62,7 +62,7 @@ const testimonials = [
     },
 ];
 
-export default function TestimonialsSection() {
+export default function Testimonials() {
 
     return (
         <section
