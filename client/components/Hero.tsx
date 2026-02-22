@@ -17,7 +17,6 @@ export default function HeroSection() {
 
             {/* ── Ambient background glows ── */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
-               
                 <motion.div
                     initial={{ opacity: 0, scale: 0.6 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -27,7 +26,6 @@ export default function HeroSection() {
                         background: "radial-gradient(circle, rgba(79,126,255,0.18) 0%, transparent 70%)",
                     }}
                 />
-
                 {/* Grid lines */}
                 <div
                     className="absolute inset-0 opacity-[0.04]"
