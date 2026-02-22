@@ -47,7 +47,12 @@ export default function AboutSection() {
             id="about"
             className="relative bg-[#00030f] text-[#F0F4FF] overflow-hidden py-16 px-6"
         >
-           <div className="relative z-10 max-w-6xl mx-auto">
+            <div
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] opacity-20"
+                style={{ background: "linear-gradient(90deg, transparent, #4f7eff, transparent)" }}
+            />
+
+            <div className="relative z-10 max-w-6xl mx-auto">
                 {/* Section header */}
                 <div className="text-center mb-20">
                     <motion.h2
