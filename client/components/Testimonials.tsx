@@ -63,9 +63,6 @@ const testimonials = [
 ];
 
 export default function TestimonialsSection() {
-    const half = Math.ceil(testimonials.length / 2);
-    const row1 = testimonials.slice(0, half);
-    const row2 = testimonials.slice(half);
 
     return (
         <section
@@ -73,7 +70,7 @@ export default function TestimonialsSection() {
             className="relative bg-[#00030f] text-[#F0F4FF] overflow-hidden py-16 px-6"
         >
             <div
-                className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] opacity-20"
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px opacity-20"
                 style={{ background: "linear-gradient(90deg, transparent, #4f7eff, transparent)" }}
             />
             <div className="relative z-10 max-w-6xl mx-auto">
@@ -108,7 +105,6 @@ export default function TestimonialsSection() {
                     </motion.p>
                 </div>
 
-                {/* Cards — Row 1 */}
                 <motion.div
                     variants={fadeUp}
                     initial="hidden"
@@ -117,24 +113,11 @@ export default function TestimonialsSection() {
                     custom={0.1}
                     className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4"
                 >
-                    {row1.map((t, i) => (
+                    {testimonials.map((t, i) => (
                         <TestimonialCard key={t.name} testimonial={t} delay={0.1 * i} />
                     ))}
                 </motion.div>
 
-                {/* Cards — Row 2 */}
-                <motion.div
-                    variants={fadeUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    custom={0.2}
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
-                >
-                    {row2.map((t, i) => (
-                        <TestimonialCard key={t.name} testimonial={t} delay={0.1 * i + 0.15} />
-                    ))}
-                </motion.div>
             </div>
         </section>
     );
