@@ -10,7 +10,7 @@ function Navbar() {
         { name: "Home", href: "/" },
         { name: "About", href: "/#about" },
         { name: "Testimonials", href: "/#testimonials" },
-        { name: "Products", href: "#reviews" },
+        { name: "Get Started", href: "/#cta" },
     ];
 
     const [isOpen, setIsOpen] = useState(false);

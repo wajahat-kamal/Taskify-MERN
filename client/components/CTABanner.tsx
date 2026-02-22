@@ -13,7 +13,7 @@ const fadeUp: Variants = {
 
 export default function CTABanner() {
     return (
-        <section className="relative bg-transparent text-[#F0F4FF] overflow-hidden py-16 px-6">
+        <section id="#cta" className="relative bg-transparent text-[#F0F4FF] overflow-hidden py-16 px-6">
             <div
                 className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px opacity-20"
                 style={{ background: "linear-gradient(90deg, transparent, #4f7eff, transparent)" }}
@@ -81,7 +81,7 @@ export default function CTABanner() {
                                     className="relative flex items-center gap-2 bg-[#4f7eff] text-white font-bold px-8 py-3.5 rounded-xl text-[15px] overflow-hidden group"
                                     style={{ boxShadow: "0 0 30px rgba(79,126,255,0.45)" }}
                                 >
-                                    <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
+                                    <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-linear-to-r from-transparent via-white/20 to-transparent skew-x-12" />
                                     Get Started Free
                                     <ArrowRight size={16} />
                                 </motion.button>
