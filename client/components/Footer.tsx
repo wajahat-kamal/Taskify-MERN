@@ -30,7 +30,7 @@ export default function Footer() {
 
             {/* Top divider */}
             <div
-                className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] opacity-20"
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px opacity-20"
                 style={{ background: "linear-gradient(90deg, transparent, #4f7eff, transparent)" }}
             />
 
@@ -114,7 +114,7 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom divider */}
-                <div className="w-full h-[1px] bg-white/[0.06] mb-8" />
+                <div className="w-full h-px bg-white/6 mb-8" />
 
                 {/* Bottom row */}
                 <motion.div
