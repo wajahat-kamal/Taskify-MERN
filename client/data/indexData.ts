@@ -30,3 +30,10 @@ export const stats = [
     { value: "3×", label: "Faster execution" },
     { value: "4.9★", label: "Average rating" },
 ];
+
+export const nav_items = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/#about" },
+    { name: "Testimonials", href: "/#testimonials" },
+    { name: "Get Started", href: "/#cta" },
+];

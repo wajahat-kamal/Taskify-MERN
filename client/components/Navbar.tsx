@@ -4,15 +4,9 @@ import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { nav_items } from '@/data/indexData';
 
 function Navbar() {
-    const nav_items = [
-        { name: "Home", href: "/" },
-        { name: "About", href: "/#about" },
-        { name: "Testimonials", href: "/#testimonials" },
-        { name: "Get Started", href: "/#cta" },
-    ];
-
     const [isOpen, setIsOpen] = useState(false);
 
     return (
