@@ -1,8 +1,8 @@
 import AboutSection from "@/components/AboutSection";
+import CTABanner from "@/components/CTABanner";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Testimonials from "@/components/Testimonials";
-import Image from "next/image";
 
 export default function Home() {
   return (
@@ -11,6 +11,7 @@ export default function Home() {
       <Hero />
       <AboutSection/>
       <Testimonials/>
+      <CTABanner/>
     </div>
   );
 }
