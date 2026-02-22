@@ -37,3 +37,9 @@ export const nav_items = [
     { name: "Testimonials", href: "/#testimonials" },
     { name: "Get Started", href: "/#cta" },
 ];
+
+export const links = {
+    Product: ["Features", "About", "Testimonials", "Changelog"],
+    Company: ["About Us", "Careers", "Blog", "Press Kit"],
+    Legal: ["Privacy Policy", "Terms of Service", "Cookie Policy", "Security"],
+};
