@@ -15,7 +15,6 @@ export default function CTABanner() {
     return (
         <section className="relative bg-transparent text-[#F0F4FF] overflow-hidden py-32 px-6">
             <div className="relative z-10 max-w-4xl mx-auto">
-
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -31,40 +30,6 @@ export default function CTABanner() {
                         className="relative rounded-3xl px-8 py-16 md:px-16 md:py-20 text-center overflow-hidden"
                         style={{ background: "linear-gradient(135deg, #00061a 0%, #000310 100%)" }}
                     >
-
-                        {/* Inner glow blobs */}
-                        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                            <motion.div
-                                animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.5, 0.3] }}
-                                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                                className="absolute -top-20 -left-20 w-[360px] h-[360px] rounded-full"
-                                style={{
-                                    background: "radial-gradient(circle, rgba(79,126,255,0.2) 0%, transparent 70%)",
-                                    filter: "blur(50px)",
-                                }}
-                            />
-                            <motion.div
-                                animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
-                                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                                className="absolute -bottom-20 -right-20 w-[320px] h-[320px] rounded-full"
-                                style={{
-                                    background: "radial-gradient(circle, rgba(120,80,255,0.2) 0%, transparent 70%)",
-                                    filter: "blur(50px)",
-                                }}
-                            />
-                            {/* Shimmer line */}
-                            <motion.div
-                                initial={{ x: "-100%" }}
-                                animate={{ x: "200%" }}
-                                transition={{ duration: 4, repeat: Infinity, ease: "linear", repeatDelay: 3 }}
-                                className="absolute top-0 left-0 w-1/2 h-full opacity-[0.04]"
-                                style={{
-                                    background: "linear-gradient(90deg, transparent, #ffffff, transparent)",
-                                    transform: "skewX(-20deg)",
-                                }}
-                            />
-                        </div>
-
                         {/* Content */}
                         <div className="relative z-10 flex flex-col items-center">
 
