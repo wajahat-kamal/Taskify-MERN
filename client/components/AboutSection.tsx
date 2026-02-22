@@ -1,7 +1,7 @@
 "use client"
 import { motion } from "framer-motion";
 import { fadeUp } from "./Hero";
-import { features } from "@/data/indexData";
+import { features, stats } from "@/data/indexData";
 
 
 export default function AboutSection() {
