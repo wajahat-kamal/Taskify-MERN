@@ -70,7 +70,7 @@ export default function TestimonialsSection() {
     return (
         <section
             id="testimonials"
-            className="relative bg-[#00030f] text-[#F0F4FF] overflow-hidden py-32 px-6"
+            className="relative bg-[#00030f] text-[#F0F4FF] overflow-hidden py-16 px-6"
         >
             <div
                 className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] opacity-20"
@@ -80,29 +80,13 @@ export default function TestimonialsSection() {
 
                 {/* Header */}
                 <div className="text-center mb-16">
-                    <motion.div
-                        variants={fadeUp}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        custom={0}
-                        className="inline-flex items-center gap-2 bg-[#4f7eff]/10 border border-[#4f7eff]/40 rounded-full px-4 py-1.5 text-[13px] text-[#4f7eff] font-medium mb-6 backdrop-blur-sm"
-                    >
-                        <motion.span
-                            className="w-2 h-2 rounded-full bg-[#4f7eff] inline-block"
-                            animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
-                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                        />
-                        Testimonials
-                    </motion.div>
-
                     <motion.h2
                         variants={fadeUp}
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
                         custom={0.1}
-                        className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] max-w-[640px] mx-auto"
+                        className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.1] max-w-[700px] mx-auto"
                         style={{
                             background: "linear-gradient(135deg, #F0F4FF 30%, #4f7eff 100%)",
                             WebkitBackgroundClip: "text",
@@ -118,7 +102,7 @@ export default function TestimonialsSection() {
                         whileInView="visible"
                         viewport={{ once: true }}
                         custom={0.2}
-                        className="mt-5 text-[#6B7A99] max-w-[480px] mx-auto leading-[1.8] text-base"
+                        className="mt-4 text-[#6B7A99] max-w-[520px] mx-auto leading-[1.8] text-sm"
                     >
                         Don't take our word for it — here's what real teams say after switching to Taskify.
                     </motion.p>
