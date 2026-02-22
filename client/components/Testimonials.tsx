@@ -11,7 +11,7 @@ export default function Testimonials() {
             className="relative bg-[#00030f] text-[#F0F4FF] overflow-hidden py-16 px-6"
         >
             <div
-                className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px opacity-20"
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-0.5 opacity-20"
                 style={{ background: "linear-gradient(90deg, transparent, #4f7eff, transparent)" }}
             />
             <div className="relative z-10 max-w-6xl mx-auto">
@@ -25,11 +25,6 @@ export default function Testimonials() {
                         viewport={{ once: true }}
                         custom={0.1}
                         className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.1] max-w-[700px] mx-auto"
-                        style={{
-                            background: "linear-gradient(135deg, #F0F4FF 30%, #4f7eff 100%)",
-                            WebkitBackgroundClip: "text",
-                            WebkitTextFillColor: "transparent",
-                        }}
                     >
                         Loved by teams everywhere
                     </motion.h2>
