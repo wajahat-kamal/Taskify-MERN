@@ -10,7 +10,7 @@ export default function Footer() {
 
             {/* Top divider */}
             <div
-                className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px opacity-20"
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-0.5 opacity-20"
                 style={{ background: "linear-gradient(90deg, transparent, #4f7eff, transparent)" }}
             />
             <div className="relative z-10 max-w-6xl mx-auto">
@@ -27,8 +27,8 @@ export default function Footer() {
                     >
                         {/* Logo */}
                         <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 rounded-lg bg-[#4f7eff]/20 border border-[#4f7eff]/40 flex items-center justify-center">
-                                <Sparkles size={14} className="text-[#4f7eff]" />
+                            <div className="w-8 h-8 rounded-lg bg-(--color-primary)/20 border border-(--color-primary)/40 flex items-center justify-center">
+                                <Sparkles size={14} className="text-(--color-primary)" />
                             </div>
                             <span className="text-xl font-extrabold tracking-widest text-[#F0F4FF]">
                                 TASKIFY
@@ -59,7 +59,7 @@ export default function Footer() {
                                     <li key={item}>
                                         <a
                                             href="#"
-                                            className="text-[#6B7A99] text-sm hover:text-[#4f7eff] transition-colors duration-200"
+                                            className="text-[#6B7A99] text-sm hover:text-(--color-primary) transition-colors duration-200"
                                         >
                                             {item}
                                         </a>
