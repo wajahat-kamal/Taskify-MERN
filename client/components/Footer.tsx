@@ -61,26 +61,6 @@ export default function Footer() {
                         <p className="text-[#6B7A99] text-sm leading-[1.8] max-w-[280px]">
                             The AI-native workspace that keeps your team aligned, focused, and shipping — every single day.
                         </p>
-
-                        {/* Socials */}
-                        <div className="flex items-center gap-3">
-                            {socials.map((s, i) => (
-                                <motion.a
-                                    key={s.label}
-                                    href={s.href}
-                                    aria-label={s.label}
-                                    initial={{ opacity: 0, scale: 0.8 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.4, delay: 0.1 * i }}
-                                    whileHover={{ y: -3, scale: 1.1 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="w-9 h-9 rounded-xl bg-white/[0.04] border border-white/[0.08] hover:border-[#4f7eff]/40 hover:bg-[#4f7eff]/10 flex items-center justify-center transition-colors duration-300"
-                                >
-                                    <s.icon size={15} className="text-[#6B7A99] group-hover:text-[#4f7eff]" />
-                                </motion.a>
-                            ))}
-                        </div>
                     </motion.div>
 
                     {/* Nav link cols */}
