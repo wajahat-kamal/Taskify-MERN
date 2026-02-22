@@ -102,7 +102,7 @@ export default function HeroSection() {
                         style={{ boxShadow: "0 0 30px rgba(79,126,255,0.45)" }}
                     >
                         {/* Shimmer */}
-                        <span className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
+                        <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-linear-to-r from-transparent via-white/20 to-transparent skew-x-12" />
                         Get Started Free
                         <ArrowRight size={16} />
                     </motion.button>
