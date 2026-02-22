@@ -51,3 +51,4 @@ function TestimonialCard({ testimonial, delay }: { testimonial: Testimonial; del
         </motion.div>
     );
 }
+export default TestimonialCard;
