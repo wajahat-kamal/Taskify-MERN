@@ -18,12 +18,9 @@ export default function Footer() {
                 className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px opacity-20"
                 style={{ background: "linear-gradient(90deg, transparent, #4f7eff, transparent)" }}
             />
-
             <div className="relative z-10 max-w-6xl mx-auto">
-
                 {/* Top row */}
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-16">
-
                     {/* Brand col */}
                     <motion.div
                         variants={fadeUp}
