@@ -1,6 +1,6 @@
 import { Testimonial } from "@/data&types/testimonials";
 import { Quote, Star } from "lucide-react";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 
 function TestimonialCard({ testimonial, delay }: { testimonial: Testimonial; delay: number }) {
     return (
@@ -10,7 +10,7 @@ function TestimonialCard({ testimonial, delay }: { testimonial: Testimonial; del
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -6, scale: 1.02 }}
-            className="group relative bg-white/[0.03] border border-white/[0.08] hover:border-[#4f7eff]/40 rounded-2xl p-6 backdrop-blur-sm transition-colors duration-300 flex flex-col gap-4 cursor-default"
+            className="group relative bg-white/3 border border-white/8 hover:border-[#4f7eff]/40 rounded-2xl p-6 backdrop-blur-sm transition-colors duration-300 flex flex-col gap-4 cursor-default"
         >
             {/* Hover glow */}
             <div
@@ -35,7 +35,7 @@ function TestimonialCard({ testimonial, delay }: { testimonial: Testimonial; del
                 </p>
 
                 {/* Author */}
-                <div className="flex items-center gap-3 pt-2 border-t border-white/[0.06]">
+                <div className="flex items-center gap-3 pt-2 border-t border-white/6">
                     <div
                         className="w-9 h-9 rounded-full flex items-center justify-center text-[11px] font-bold text-white shrink-0"
                         style={{ backgroundColor: testimonial.color + "33", border: `1px solid ${testimonial.color}55` }}
