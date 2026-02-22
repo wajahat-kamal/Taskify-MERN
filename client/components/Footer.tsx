@@ -96,7 +96,7 @@ export default function Footer() {
                     whileInView="visible"
                     viewport={{ once: true }}
                     custom={0.3}
-                    className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#6B7A99]"
+                    className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[#6B7A99]"
                 >
                     <span>© {new Date().getFullYear()} Taskify. All rights reserved.</span>
 
