@@ -13,7 +13,6 @@ const fadeUp: Variants = {
 };
 
 export default function Testimonials() {
-
     return (
         <section
             id="testimonials"
