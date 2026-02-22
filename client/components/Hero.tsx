@@ -27,35 +27,13 @@ export default function HeroSection() {
                         background: "radial-gradient(circle, rgba(79,126,255,0.18) 0%, transparent 70%)",
                     }}
                 />
-                {/* Top-left accent */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.6 }}
-                    transition={{ duration: 2.5, delay: 0.5 }}
-                    className="absolute -top-32 -left-32 w-[400px] h-[400px] rounded-full"
-                    style={{
-                        background: "radial-gradient(circle, rgba(79,126,255,0.12) 0%, transparent 70%)",
-                        filter: "blur(60px)",
-                    }}
-                />
-                {/* Bottom-right accent */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.5 }}
-                    transition={{ duration: 2.5, delay: 0.8 }}
-                    className="absolute -bottom-20 -right-20 w-[350px] h-[350px] rounded-full"
-                    style={{
-                        background: "radial-gradient(circle, rgba(120,80,255,0.15) 0%, transparent 70%)",
-                        filter: "blur(60px)",
-                    }}
-                />
 
                 {/* Grid lines */}
                 <div
                     className="absolute inset-0 opacity-[0.04]"
                     style={{
                         backgroundImage:
-                            "linear-gradient(#4f7eff 1px, transparent 1px), linear-gradient(90deg, #4f7eff 1px, transparent 1px)",
+                            "linear-gradient(#4f7eff 1.5px, transparent 1.5px), linear-gradient(90deg, #4f7eff 1.5px, transparent 1.5px)",
                         backgroundSize: "60px 60px",
                     }}
                 />
