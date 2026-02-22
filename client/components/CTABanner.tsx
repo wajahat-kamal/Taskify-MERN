@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { fadeUp } from "./Hero";
+import DemoButton from "./DemoButton";
 
 export default function CTABanner() {
     return (
@@ -73,14 +74,7 @@ export default function CTABanner() {
                                     <ArrowRight size={16} />
                                 </motion.button>
 
-                                <motion.button
-                                    whileHover={{ y: -3, scale: 1.03 }}
-                                    whileTap={{ scale: 0.97 }}
-                                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                                    className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-(--color-primary)/40 text-[#F0F4FF] font-medium px-6 py-3 rounded-xl text-[15px] transition-colors duration-300 backdrop-blur-sm"
-                                >
-                                    View Demo
-                                </motion.button>
+                                <DemoButton />
                             </motion.div>
 
                             {/* Trust note */}
@@ -92,7 +86,7 @@ export default function CTABanner() {
                                 custom={0.5}
                                 className="mt-6 text-[#6B7A99] text-sm"
                             >
-                                Free trial · No setup fees 
+                                Free trial · No setup fees
                             </motion.p>
 
                         </div>

@@ -1,6 +1,7 @@
 "use client"
 import { motion, Variants } from "framer-motion";
 import { Sparkles, ArrowRight, Play } from "lucide-react";
+import DemoButton from "./DemoButton";
 
 export const fadeUp: Variants = {
     hidden: { opacity: 0, y: 32 },
@@ -107,21 +108,7 @@ export default function HeroSection() {
                         <ArrowRight size={16} />
                     </motion.button>
 
-                    <motion.button
-                        whileHover={{ y: -3, scale: 1.03 }}
-                        whileTap={{ scale: 0.97 }}
-                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                        className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-(--color-primary)/40 text-[#F0F4FF] font-medium px-8 py-3.5 rounded-xl text-[15px] transition-colors duration-300 backdrop-blur-sm"
-                    >
-                        <motion.span
-                            animate={{ scale: [1, 1.15, 1] }}
-                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                            className="flex items-center"
-                        >
-                            <Play size={14} fill="#4f7eff" stroke="#4f7eff" />
-                        </motion.span>
-                        Watch Demo
-                    </motion.button>
+                    <DemoButton />
                 </motion.div>
 
                 {/* Social proof */}
