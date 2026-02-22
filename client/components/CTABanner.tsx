@@ -13,28 +13,28 @@ const fadeUp: Variants = {
 
 export default function CTABanner() {
     return (
-        <section className="relative bg-transparent text-[#F0F4FF] overflow-hidden py-32 px-6">
+        <section className="relative bg-transparent text-[#F0F4FF] overflow-hidden py-16 px-6">
             <div className="relative z-10 max-w-4xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                    className="relative rounded-3xl overflow-hidden border border-[#4f7eff]/20 p-[1px]"
+                    className="relative rounded-3xl overflow-hidden border border-[#4f7eff]/20 p-px"
                     style={{
                         background: "linear-gradient(135deg, rgba(79,126,255,0.15), rgba(120,80,255,0.1))",
                     }}
                 >
                     {/* Inner card */}
                     <div
-                        className="relative rounded-3xl px-8 py-16 md:px-16 md:py-20 text-center overflow-hidden"
+                        className="relative rounded-3xl px-8 py-16 text-center overflow-hidden"
                         style={{ background: "linear-gradient(135deg, #00061a 0%, #000310 100%)" }}
                     >
                         {/* Content */}
                         <div className="relative z-10 flex flex-col items-center">
 
                             {/* Badge */}
-                            <motion.div
+                            {/* <motion.div
                                 variants={fadeUp}
                                 initial="hidden"
                                 whileInView="visible"
@@ -50,7 +50,7 @@ export default function CTABanner() {
                                     <Sparkles size={12} />
                                 </motion.span>
                                 No credit card required
-                            </motion.div>
+                            </motion.div> */}
 
                             {/* Headline */}
                             <motion.h2
@@ -97,7 +97,7 @@ export default function CTABanner() {
                                     className="relative flex items-center gap-2 bg-[#4f7eff] text-white font-bold px-8 py-3.5 rounded-xl text-[15px] overflow-hidden group"
                                     style={{ boxShadow: "0 0 30px rgba(79,126,255,0.45)" }}
                                 >
-                                    <span className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
+                                    <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
                                     Get Started Free
                                     <ArrowRight size={16} />
                                 </motion.button>
