@@ -91,7 +91,7 @@ export default function AboutSection() {
                             custom={0.1 * i}
                             whileHover={{ y: -6, scale: 1.02 }}
                             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                            className="group relative bg-white/[0.03] border border-white/[0.08] hover:border-[#4f7eff]/40 rounded-2xl p-6 backdrop-blur-sm transition-colors duration-300 cursor-default"
+                            className="group relative bg-white/3 border border-white/8 hover:border-[#4f7eff]/40 rounded-2xl p-6 backdrop-blur-sm transition-colors duration-300 cursor-default"
                         >
                             {/* Card glow on hover */}
                             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -115,7 +115,7 @@ export default function AboutSection() {
                     whileInView="visible"
                     viewport={{ once: true }}
                     custom={0.2}
-                    className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/[0.06] rounded-2xl overflow-hidden border border-white/[0.06]"
+                    className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/6 rounded-2xl overflow-hidden border border-white/6"
                 >
                     {stats.map((stat, i) => (
                         <motion.div
