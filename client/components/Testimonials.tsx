@@ -1,3 +1,4 @@
+"use client";
 import { testimonials } from "@/data&types/testimonials";
 import { motion, Variants } from "framer-motion";
 import TestimonialsCard from "./TestimonialsCard";
@@ -10,8 +11,6 @@ const fadeUp: Variants = {
         transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1], delay },
     }),
 };
-
-
 
 export default function Testimonials() {
 
