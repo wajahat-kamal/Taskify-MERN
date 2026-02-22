@@ -1,5 +1,5 @@
 "use client";
-import { testimonials } from "@/data&types/testimonials";
+import { testimonials } from "@/data/testimonials";
 import { motion } from "framer-motion";
 import TestimonialsCard from "./TestimonialsCard";
 import { fadeUp } from "./Hero";

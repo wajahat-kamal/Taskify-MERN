@@ -1,4 +1,4 @@
-import { Testimonial } from "@/data&types/testimonials";
+import { Testimonial } from "@/data/testimonials";
 import { Quote, Star } from "lucide-react";
 import { motion } from "framer-motion";
 
