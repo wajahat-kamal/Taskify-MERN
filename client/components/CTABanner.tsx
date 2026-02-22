@@ -32,26 +32,6 @@ export default function CTABanner() {
                     >
                         {/* Content */}
                         <div className="relative z-10 flex flex-col items-center">
-
-                            {/* Badge */}
-                            {/* <motion.div
-                                variants={fadeUp}
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true }}
-                                custom={0.1}
-                                className="inline-flex items-center gap-2 bg-[#4f7eff]/10 border border-[#4f7eff]/40 rounded-full px-4 py-1.5 text-[13px] text-[#4f7eff] font-medium mb-8 backdrop-blur-sm"
-                            >
-                                <motion.span
-                                    animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
-                                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                                    className="flex items-center"
-                                >
-                                    <Sparkles size={12} />
-                                </motion.span>
-                                No credit card required
-                            </motion.div> */}
-
                             {/* Headline */}
                             <motion.h2
                                 variants={fadeUp}
