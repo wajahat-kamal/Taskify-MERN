@@ -46,7 +46,7 @@ export default function HeroSection() {
                     variants={fadeUp}
                     initial="hidden"
                     animate="visible"
-                    className="inline-flex items-center gap-2 bg-[#4f7eff]/10 border border-[#4f7eff]/40 rounded-full px-4 py-1.5 text-[13px] text-[#4f7eff] font-medium mb-6 backdrop-blur-sm"
+                    className="inline-flex items-center gap-2 bg-(--color-primary)/10 border border-(--color-primary) rounded-full px-4 py-1.5 text-[13px] text-(--color-primary) font-medium mb-6 backdrop-blur-sm"
                 >
                     <motion.span
                         animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
@@ -80,7 +80,7 @@ export default function HeroSection() {
                     variants={fadeUp}
                     initial="hidden"
                     animate="visible"
-                    className="mt-5 text-[#6B7A99] max-w-[520px] leading-[1.8] text-xs sm:text-base"
+                    className="mt-4 text-[#6B7A99] max-w-[520px] leading-[1.8] text-xs sm:text-base"
                 >
                     Taskify learns your workflow, auto-assigns priorities, and keeps your
                     team perfectly in sync — so you can focus on what actually matters.
@@ -98,7 +98,7 @@ export default function HeroSection() {
                         whileHover={{ y: -3, scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
                         transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                        className="relative flex items-center gap-2 bg-[#4f7eff] text-white font-bold px-8 py-3.5 rounded-xl text-[15px] overflow-hidden group"
+                        className="relative flex items-center gap-2 bg-(--color-primary) text-white font-bold px-8 py-3.5 rounded-xl text-[15px] overflow-hidden group"
                         style={{ boxShadow: "0 0 30px rgba(79,126,255,0.45)" }}
                     >
                         {/* Shimmer */}
@@ -111,7 +111,7 @@ export default function HeroSection() {
                         whileHover={{ y: -3, scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
                         transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                        className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#4f7eff]/40 text-[#F0F4FF] font-medium px-8 py-3.5 rounded-xl text-[15px] transition-colors duration-300 backdrop-blur-sm"
+                        className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-(--color-primary)/40 text-[#F0F4FF] font-medium px-8 py-3.5 rounded-xl text-[15px] transition-colors duration-300 backdrop-blur-sm"
                     >
                         <motion.span
                             animate={{ scale: [1, 1.15, 1] }}
