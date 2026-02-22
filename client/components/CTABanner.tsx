@@ -14,6 +14,10 @@ const fadeUp: Variants = {
 export default function CTABanner() {
     return (
         <section className="relative bg-transparent text-[#F0F4FF] overflow-hidden py-16 px-6">
+            <div
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px opacity-20"
+                style={{ background: "linear-gradient(90deg, transparent, #4f7eff, transparent)" }}
+            />
             <div className="relative z-10 max-w-4xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
