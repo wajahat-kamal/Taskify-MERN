@@ -4,7 +4,7 @@ import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { nav_items } from '@/data/indexData';
+import { nav_items } from '@/data/generalData';
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);

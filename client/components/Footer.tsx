@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { fadeUp } from "./Hero";
-import { links } from "@/data/indexData";
+import { links } from "@/data/generalData";
 
 export default function Footer() {
     return (
