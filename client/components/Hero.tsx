@@ -17,7 +17,7 @@ export default function HeroSection() {
 
             {/* ── Ambient background glows ── */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                {/* Centre glow */}
+               
                 <motion.div
                     initial={{ opacity: 0, scale: 0.6 }}
                     animate={{ opacity: 1, scale: 1 }}

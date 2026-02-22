@@ -47,7 +47,6 @@ export default function AboutSection() {
             id="about"
             className="relative bg-[#00030f] text-[#F0F4FF] overflow-hidden py-16 px-6"
         >
-           
 
             <div className="relative z-10 max-w-6xl mx-auto">
 
