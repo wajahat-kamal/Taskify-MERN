@@ -11,13 +11,13 @@ function DemoButton() {
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 onClick={() =>
                     toast("🎬 Demo coming soon! Stay tuned.", {
-                        position: "bottom-right",
+                        position: "top-right",
                         autoClose: 3000,
                         theme: "dark",
                         style: {
                             background: "#0a0f1e",
                             border: "1px solid rgba(79,126,255,0.3)",
-                            color: "#F0F4FF",
+                            color: "(--color-primary)",
                             borderRadius: "12px",
                         },
                     })
