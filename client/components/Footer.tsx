@@ -1,15 +1,7 @@
 "use client"
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
-
-const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: (delay: number = 0) => ({
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1], delay },
-    }),
-};
+import { fadeUp } from "./Hero";
 
 const links = {
     Product: ["Features", "About", "Testimonials", "Changelog"],
