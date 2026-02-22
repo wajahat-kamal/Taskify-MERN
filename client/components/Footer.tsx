@@ -136,7 +136,7 @@ export default function Footer() {
                         >
                             ♥
                         </motion.span>
-                        <span>using Next.js & Tailwind CSS</span>
+                        <a href="https://wajahat-kamal.vercel.app/">by <span className="text-(--color-primary)">Wajahat Kamal</span></a>
                     </div>
                 </motion.div>
 
