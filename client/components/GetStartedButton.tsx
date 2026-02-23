@@ -3,13 +3,13 @@ import { useRouter } from "next/navigation";
 import { ArrowRight } from 'lucide-react';
 import { motion } from "framer-motion"
 
-function GetStartedButton() {
+function GetStartedButton({text, route}: {text: string, route: string}) {
 
     const router = useRouter()
 
     return (
         <motion.button
-            onClick={() => router.push("/signup")}
+            onClick={() => router.push(route)}
             whileHover={{ y: -3, scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -18,7 +18,7 @@ function GetStartedButton() {
         >
             {/* Shimmer */}
             <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-linear-to-r from-transparent via-white/20 to-transparent skew-x-12" />
-            Get Started Free
+            {text}
             <ArrowRight size={16} />
         </motion.button>
     )

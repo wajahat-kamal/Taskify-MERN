@@ -63,7 +63,7 @@ export default function CTABanner() {
                                 custom={0.4}
                                 className="flex gap-3 mt-8 flex-wrap justify-center"
                             >
-                                <GetStartedButton />
+                                <GetStartedButton text="Get Started Free" route="/signup" />
                                 <DemoButton />
                             </motion.div>
 
