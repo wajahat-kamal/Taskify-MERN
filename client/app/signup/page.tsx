@@ -5,6 +5,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { fadeUp } from "@/components/Hero";
 import { useRouter } from "next/navigation";
+import PrimaryButton from "@/components/PrimaryButton";
 
 export default function SignupPage() {
     const [showPassword, setShowPassword] = useState(false);
@@ -141,15 +142,9 @@ export default function SignupPage() {
                             initial="hidden"
                             animate="visible"
                             custom={0.55}
-                            whileHover={{ y: -2, scale: 1.02 }}
-                            whileTap={{ scale: 0.97 }}
-                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                            className="relative w-full mt-5 flex items-center justify-center gap-2 bg-[#4f7eff] text-white font-bold px-8 py-3.5 rounded-xl text-[15px] overflow-hidden group"
-                            style={{ boxShadow: "0 0 30px rgba(79,126,255,0.35)" }}
+                            className="relative w-full mt-5 flex items-center justify-center group"
                         >
-                            <span className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
-                            Create Account
-                            <ArrowRight size={16} />
+                            <PrimaryButton text="Create Account" route=""/>
                         </motion.button>
 
                         {/* Login link */}
