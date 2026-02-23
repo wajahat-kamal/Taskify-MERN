@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { fadeUp } from "./Hero";
 import DemoButton from "./DemoButton";
-import GetStartedButton from "./GetStartedButton";
+import PrimaryButton from "./PrimaryButton";
 
 export default function CTABanner() {
     return (
@@ -63,7 +63,7 @@ export default function CTABanner() {
                                 custom={0.4}
                                 className="flex gap-3 mt-8 flex-wrap justify-center"
                             >
-                                <GetStartedButton text="Get Started Free" route="/signup" />
+                                <PrimaryButton text="Get Started Free" route="/signup" />
                                 <DemoButton />
                             </motion.div>
 

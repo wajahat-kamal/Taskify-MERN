@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { ArrowRight } from 'lucide-react';
 import { motion } from "framer-motion"
 
-function GetStartedButton({text, route}: {text: string, route: string}) {
+function PrimaryButton({text, route}: {text: string, route: string}) {
 
     const router = useRouter()
 
@@ -24,4 +24,4 @@ function GetStartedButton({text, route}: {text: string, route: string}) {
     )
 }
 
-export default GetStartedButton
+export default PrimaryButton
