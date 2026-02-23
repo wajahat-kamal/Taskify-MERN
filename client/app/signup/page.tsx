@@ -37,10 +37,13 @@ export default function SignupPage() {
                             initial="hidden"
                             animate="visible"
                             custom={0.1}
-                            className="text-center mb-8 flex flex-row justify-between items-center"
+                            className="text-center mb-8 flex flex-row justify-center items-center gap-8"
                         >
-                            <button onClick={() => router.push("/")}>
-                                <ArrowLeft />
+                            <button
+                                onClick={() => router.push("/")}
+                                className="w-9 h-9 rounded-xl bg-white/4 border border-white/8 hover:border-[#4f7eff]/40 hover:bg-[#4f7eff]/10 flex items-center justify-center transition-colors duration-300"
+                            >
+                                <ArrowLeft size={16} className="text-[#6B7A99]" />
                             </button>
                             <div className="flex flex-col justify-center items-center">
                                 <h1 className="text-2xl font-extrabold tracking-tight mb-2"
@@ -48,7 +51,7 @@ export default function SignupPage() {
                                     Create your account
                                 </h1>
                                 <p className="text-[#6B7A99] text-sm">
-                                    Start your free 14-day trial. No credit card required.
+                                    Join 12,000+ teams — completely free.
                                 </p>
                             </div>
                         </motion.div>
