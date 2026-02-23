@@ -6,6 +6,8 @@ import Link from "next/link";
 import { fadeUp } from "@/components/Hero";
 import { useRouter } from "next/navigation";
 import PrimaryButton from "@/components/PrimaryButton";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function SignupPage() {
     const [showPassword, setShowPassword] = useState(false);
@@ -13,7 +15,21 @@ export default function SignupPage() {
 
     const [form, setForm] = useState({ name: "", email: "", password: "" })
 
-
+    const submitRegisterForm = async () => {
+        try {
+            const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/register`, form)
+            if (data.success) {
+                toast.success(data.message)
+                setForm({ name: "", email: "", password: "" })
+            } else {
+                toast.error(data.message)
+                console.log(data.message);
+            }
+        } catch (error: any) {
+            toast.error(error.message)
+            console.log(error.message);
+        }
+    }
 
     return (
         <main className="min-h-screen bg-[#00030f] text-[#F0F4FF] flex items-center justify-center px-6 py-16 relative overflow-hidden">
@@ -145,6 +161,7 @@ export default function SignupPage() {
 
                         {/* Submit */}
                         <motion.button
+                            onClick={submitRegisterForm}
                             variants={fadeUp}
                             initial="hidden"
                             animate="visible"
