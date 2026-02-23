@@ -11,6 +11,10 @@ export default function SignupPage() {
     const [showPassword, setShowPassword] = useState(false);
     const router = useRouter()
 
+    const [form, setForm] = useState({ name: "", email: "", password: "" })
+
+
+
     return (
         <main className="min-h-screen bg-[#00030f] text-[#F0F4FF] flex items-center justify-center px-6 py-16 relative overflow-hidden">
 
@@ -71,6 +75,7 @@ export default function SignupPage() {
                                     Full Name
                                 </label>
                                 <input
+                                    onChange={(e) => setForm({ ...form, name: e.target.value })}
                                     type="text"
                                     placeholder="John Doe"
                                     className="w-full bg-white/4 border border-white/8 focus:border-[#4f7eff]/50 focus:bg-[#4f7eff]/4 rounded-xl px-4 py-3 text-sm text-[#F0F4FF] placeholder-[#6B7A99] outline-none transition-all duration-300"
@@ -88,6 +93,7 @@ export default function SignupPage() {
                                     Email Address
                                 </label>
                                 <input
+                                    onChange={(e) => setForm({ ...form, email: e.target.value })}
                                     type="email"
                                     placeholder="john@example.com"
                                     className="w-full bg-white/4 border border-white/8 focus:border-[#4f7eff]/50 focus:bg-[#4f7eff]/4 rounded-xl px-4 py-3 text-sm text-[#F0F4FF] placeholder-[#6B7A99] outline-none transition-all duration-300"
@@ -106,6 +112,7 @@ export default function SignupPage() {
                                 </label>
                                 <div className="relative">
                                     <input
+                                        onChange={(e) => setForm({ ...form, password: e.target.value })}
                                         type={showPassword ? "text" : "password"}
                                         placeholder="Min. 8 characters"
                                         className="w-full bg-white/4 border border-white/8 focus:border-[#4f7eff]/50 focus:bg-[#4f7eff]/4 rounded-xl px-4 py-3 pr-11 text-sm text-[#F0F4FF] placeholder-[#6B7A99] outline-none transition-all duration-300"
