@@ -1,6 +1,6 @@
 "use client"
 import { motion, Variants } from "framer-motion";
-import { Sparkles, ArrowRight, Play } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import DemoButton from "./DemoButton";
 
 export const fadeUp: Variants = {
@@ -13,6 +13,7 @@ export const fadeUp: Variants = {
 };
 
 export default function HeroSection() {
+
     return (
         <header className="text-[#F0F4FF] min-h-screen overflow-x-hidden relative flex items-center justify-center bg-[#00030f]">
             {/* ── Ambient background glows ── */}
@@ -94,18 +95,7 @@ export default function HeroSection() {
                     animate="visible"
                     className="flex gap-3 mt-8 flex-wrap justify-center"
                 >
-                    <motion.button
-                        whileHover={{ y: -3, scale: 1.03 }}
-                        whileTap={{ scale: 0.97 }}
-                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                        className="relative flex items-center gap-2 bg-(--color-primary) text-white font-bold px-8 py-3.5 rounded-xl text-[15px] overflow-hidden group"
-                        style={{ boxShadow: "0 0 30px rgba(79,126,255,0.45)" }}
-                    >
-                        {/* Shimmer */}
-                        <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-linear-to-r from-transparent via-white/20 to-transparent skew-x-12" />
-                        Get Started Free
-                        <ArrowRight size={16} />
-                    </motion.button>
+                   
 
                     <DemoButton />
                 </motion.div>

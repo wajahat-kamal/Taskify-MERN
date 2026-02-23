@@ -62,17 +62,7 @@ export default function CTABanner() {
                                 custom={0.4}
                                 className="flex gap-3 mt-8 flex-wrap justify-center"
                             >
-                                <motion.button
-                                    whileHover={{ y: -3, scale: 1.03 }}
-                                    whileTap={{ scale: 0.97 }}
-                                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                                    className="relative flex items-center gap-2 bg-(--color-primary) text-white font-bold px-6 py-3 rounded-xl text-[15px] overflow-hidden group"
-                                    style={{ boxShadow: "0 0 30px rgba(79,126,255,0.45)" }}
-                                >
-                                    <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-linear-to-r from-transparent via-white/20 to-transparent skew-x-12" />
-                                    Get Started Free
-                                    <ArrowRight size={16} />
-                                </motion.button>
+                            
 
                                 <DemoButton />
                             </motion.div>
