@@ -2,6 +2,7 @@
 import { motion, Variants } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import DemoButton from "./DemoButton";
+import GetStartedButton from "./GetStartedButton";
 
 export const fadeUp: Variants = {
     hidden: { opacity: 0, y: 32 },
@@ -95,8 +96,7 @@ export default function HeroSection() {
                     animate="visible"
                     className="flex gap-3 mt-8 flex-wrap justify-center"
                 >
-                   
-
+                    <GetStartedButton/>
                     <DemoButton />
                 </motion.div>
 
