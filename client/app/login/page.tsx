@@ -7,7 +7,7 @@ import { fadeUp } from "@/components/Hero";
 import { useRouter } from "next/navigation";
 import PrimaryButton from "@/components/PrimaryButton";
 
-export default function SignupPage() {
+export default function LoginPage() {
     const [showPassword, setShowPassword] = useState(false);
     const router = useRouter()
 
@@ -49,7 +49,7 @@ export default function SignupPage() {
                             <div className="flex flex-col justify-center items-center">
                                 <h1 className="text-2xl font-extrabold tracking-tight mb-2"
                                 >
-                                    Create your account
+                                    Welcome Back
                                 </h1>
                                 <p className="text-[#6B7A99] text-sm">
                                     Join 12,000+ teams — completely free.
@@ -59,23 +59,6 @@ export default function SignupPage() {
 
                         {/* Form fields */}
                         <div className="flex flex-col gap-4">
-
-                            {/* Full name */}
-                            <motion.div
-                                variants={fadeUp}
-                                initial="hidden"
-                                animate="visible"
-                                custom={0.3}
-                            >
-                                <label className="block text-xs font-medium text-[#9AAAC8] mb-1.5">
-                                    Full Name
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="John Doe"
-                                    className="w-full bg-white/4 border border-white/8 focus:border-[#4f7eff]/50 focus:bg-[#4f7eff]/4 rounded-xl px-4 py-3 text-sm text-[#F0F4FF] placeholder-[#6B7A99] outline-none transition-all duration-300"
-                                />
-                            </motion.div>
 
                             {/* Email */}
                             <motion.div
@@ -122,20 +105,6 @@ export default function SignupPage() {
 
                         </div>
 
-                        {/* Terms */}
-                        <motion.p
-                            variants={fadeUp}
-                            initial="hidden"
-                            animate="visible"
-                            custom={0.5}
-                            className="text-[#6B7A99] text-xs mt-4 leading-[1.7]"
-                        >
-                            By signing up, you agree to our{" "}
-                            <a href="#" className="text-[#4f7eff] hover:underline">Terms of Service</a>{" "}
-                            and{" "}
-                            <a href="#" className="text-[#4f7eff] hover:underline">Privacy Policy</a>.
-                        </motion.p>
-
                         {/* Submit */}
                         <motion.button
                             variants={fadeUp}
@@ -144,7 +113,7 @@ export default function SignupPage() {
                             custom={0.55}
                             className="relative w-full mt-5 flex items-center justify-center group"
                         >
-                            <PrimaryButton text="Create Account" route="" widthFull={true} />
+                            <PrimaryButton text="Welcome Back" route="" widthFull={true} />
                         </motion.button>
 
                         {/* Login link */}
@@ -155,9 +124,9 @@ export default function SignupPage() {
                             custom={0.6}
                             className="text-center text-sm text-[#6B7A99] mt-6"
                         >
-                            Already have an account?{" "}
-                            <Link href="/login" className="text-[#4f7eff] font-medium hover:underline">
-                                Log in
+                            Don't have an account?{" "}
+                            <Link href="/signup" className="text-[#4f7eff] font-medium hover:underline">
+                                Signup
                             </Link>
                         </motion.p>
 
