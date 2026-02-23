@@ -5,6 +5,7 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { nav_items } from '@/data/generalData';
+import Link from 'next/link';
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -19,10 +20,10 @@ function Navbar() {
             {/* Desktop Navbar */}
             <div className="max-w-7xl md:px-24 px-6 py-4 flex items-center justify-between">
                 {/* Logo */}
-                <a href="/" className="text-[#656FE4] text-2xl font-extrabold tracking-widest flex justify-center items-center gap-2">
+                <Link href="/" className="text-[#656FE4] text-2xl font-extrabold tracking-widest flex justify-center items-center gap-2">
                     <Image src="/logo.png" width={40} height={40} className='rounded' alt="logo" />
                     TASKIFY
-                </a>
+                </Link>
 
                 {/* Desktop Links */}
                 <ul className="hidden md:flex items-center gap-8">
@@ -39,12 +40,12 @@ function Navbar() {
                 </ul>
 
                 {/* Desktop Signup Button */}
-                <a
+                <Link
                     href="/signup"
                     className="hidden md:inline-block bg-(--color-primary) text-white px-5 py-2 rounded-full border-2 hover:text-(--color-primary) hover:bg-[#000310] border-(--color-primary) transition"
                 >
                     Signup
-                </a>
+                </Link>
 
                 {/* Mobile Menu Toggle */}
                 <button
@@ -63,25 +64,25 @@ function Navbar() {
                 <ul className="flex flex-col gap-4 px-6 py-6 bg-[#040b29]">
                     {nav_items.map((item, index) => (
                         <li key={index}>
-                            <a
+                            <Link
                                 href={item.href}
                                 onClick={() => setIsOpen(false)}
                                 className="block text-white text-lg font-medium hover:text-[#656FE4] transition"
                             >
                                 {item.name}
-                            </a>
+                            </Link>
                         </li>
                     ))}
 
                     {/* ✅ Mobile Signup Button */}
                     <li className="mt-2">
-                        <a
+                        <Link
                             href="/signup"
                             onClick={() => setIsOpen(false)}
                             className="block w-full text-center bg-(--color-primary) text-white font-semibold px-5 py-2 rounded-full hover:bg-[#000310] transition"
                         >
                             Signup
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </div>
