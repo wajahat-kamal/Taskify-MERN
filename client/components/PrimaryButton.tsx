@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { ArrowRight } from 'lucide-react';
 import { motion } from "framer-motion"
 
-function PrimaryButton({text, route}: {text: string, route: string}) {
+function PrimaryButton({text, route, widthFull}: {text: string, route: string, widthFull: boolean}) {
 
     const router = useRouter()
 
@@ -13,7 +13,7 @@ function PrimaryButton({text, route}: {text: string, route: string}) {
             whileHover={{ y: -3, scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="relative cursor-pointer flex items-center gap-2 bg-(--color-primary) text-white font-bold px-8 py-3.5 rounded-xl text-[15px] overflow-hidden group"
+            className={`relative cursor-pointer flex items-center justify-center gap-2 bg-(--color-primary) text-white font-bold px-8 py-3.5 rounded-xl text-[15px] overflow-hidden group ${widthFull ? "w-full" : ""}`}
             style={{ boxShadow: "0 0 30px rgba(79,126,255,0.45)" }}
         >
             {/* Shimmer */}

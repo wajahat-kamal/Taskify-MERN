@@ -96,7 +96,7 @@ export default function HeroSection() {
                     animate="visible"
                     className="flex gap-3 mt-8 flex-wrap justify-center"
                 >
-                    <PrimaryButton text="Get Started Free" route="/signup"/>
+                    <PrimaryButton text="Get Started Free" route="/signup" widthFull={false} />
                     <DemoButton />
                 </motion.div>
 

@@ -1,6 +1,6 @@
 "use client"
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Eye, EyeOff } from "lucide-react";
+import { ArrowLeft, Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 import { fadeUp } from "@/components/Hero";
@@ -73,7 +73,7 @@ export default function SignupPage() {
                                 <input
                                     type="text"
                                     placeholder="John Doe"
-                                    className="w-full bg-white/[0.04] border border-white/[0.08] focus:border-[#4f7eff]/50 focus:bg-[#4f7eff]/[0.04] rounded-xl px-4 py-3 text-sm text-[#F0F4FF] placeholder-[#6B7A99] outline-none transition-all duration-300"
+                                    className="w-full bg-white/4 border border-white/8 focus:border-[#4f7eff]/50 focus:bg-[#4f7eff]/4 rounded-xl px-4 py-3 text-sm text-[#F0F4FF] placeholder-[#6B7A99] outline-none transition-all duration-300"
                                 />
                             </motion.div>
 
@@ -90,7 +90,7 @@ export default function SignupPage() {
                                 <input
                                     type="email"
                                     placeholder="john@example.com"
-                                    className="w-full bg-white/[0.04] border border-white/[0.08] focus:border-[#4f7eff]/50 focus:bg-[#4f7eff]/[0.04] rounded-xl px-4 py-3 text-sm text-[#F0F4FF] placeholder-[#6B7A99] outline-none transition-all duration-300"
+                                    className="w-full bg-white/4 border border-white/8 focus:border-[#4f7eff]/50 focus:bg-[#4f7eff]/4 rounded-xl px-4 py-3 text-sm text-[#F0F4FF] placeholder-[#6B7A99] outline-none transition-all duration-300"
                                 />
                             </motion.div>
 
@@ -108,7 +108,7 @@ export default function SignupPage() {
                                     <input
                                         type={showPassword ? "text" : "password"}
                                         placeholder="Min. 8 characters"
-                                        className="w-full bg-white/[0.04] border border-white/[0.08] focus:border-[#4f7eff]/50 focus:bg-[#4f7eff]/[0.04] rounded-xl px-4 py-3 pr-11 text-sm text-[#F0F4FF] placeholder-[#6B7A99] outline-none transition-all duration-300"
+                                        className="w-full bg-white/4 border border-white/8 focus:border-[#4f7eff]/50 focus:bg-[#4f7eff]/4 rounded-xl px-4 py-3 pr-11 text-sm text-[#F0F4FF] placeholder-[#6B7A99] outline-none transition-all duration-300"
                                     />
                                     <button
                                         type="button"
@@ -144,7 +144,7 @@ export default function SignupPage() {
                             custom={0.55}
                             className="relative w-full mt-5 flex items-center justify-center group"
                         >
-                            <PrimaryButton text="Create Account" route=""/>
+                            <PrimaryButton text="Create Account" route="" widthFull={true} />
                         </motion.button>
 
                         {/* Login link */}
