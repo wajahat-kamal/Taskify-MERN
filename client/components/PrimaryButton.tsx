@@ -3,13 +3,13 @@ import { useRouter } from "next/navigation";
 import { ArrowRight } from 'lucide-react';
 import { motion } from "framer-motion"
 
-function PrimaryButton({text, route, widthFull}: {text: string, route: string, widthFull: boolean}) {
+function PrimaryButton({text, route, widthFull, onClick}: {text: string, route: string, widthFull: boolean, onClick?: () => void}) {
 
     const router = useRouter()
 
     return (
         <motion.button
-            onClick={() => router.push(route)}
+            onClick={onClick ? onClick : () => router.push(route)}
             whileHover={{ y: -3, scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}

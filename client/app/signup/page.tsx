@@ -168,7 +168,7 @@ export default function SignupPage() {
                             custom={0.55}
                             className="relative w-full mt-5 flex items-center justify-center group"
                         >
-                            <PrimaryButton text="Create Account" route="" widthFull={true} />
+                            <PrimaryButton text="Create Account" route="" widthFull={true} onClick={submitRegisterForm} />
                         </motion.button>
 
                         {/* Login link */}
