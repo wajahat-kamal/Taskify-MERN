@@ -56,9 +56,16 @@ export async function createAccount(req: Request<{}, {}, RegisterBody>, res: Res
             }
         });
 
-    } catch (error) {
+    } catch (error: any) {
         console.error("Error in createAccount:", error);
-
+    
+        if (error.code === 11000) {
+            return res.status(400).json({
+                success: false,
+                message: "User already exists"
+            });
+        }
+    
         return res.status(500).json({
             success: false,
             message: "Internal server error in creating account"

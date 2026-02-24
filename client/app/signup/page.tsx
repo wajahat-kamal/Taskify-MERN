@@ -17,7 +17,7 @@ export default function SignupPage() {
 
     const submitRegisterForm = async () => {
         try {
-            const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/register`, form)
+            const { data } = await axios.post(`http://localhost:8000/auth/register`, form)
             if (data.success) {
                 toast.success(data.message)
                 setForm({ name: "", email: "", password: "" })
