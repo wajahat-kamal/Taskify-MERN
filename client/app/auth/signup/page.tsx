@@ -38,7 +38,7 @@ export default function SignupPage() {
             if (data.success) {
                 toast.success(data.message);
                 setForm({ name: "", email: "", password: "" });
-                router.push("/login"); // redirect after success
+                router.push("/"); // redirect after success
             } else {
                 toast.error(data.message);
             }
