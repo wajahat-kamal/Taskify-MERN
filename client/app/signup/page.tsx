@@ -16,20 +16,40 @@ export default function SignupPage() {
     const [form, setForm] = useState({ name: "", email: "", password: "" })
 
     const submitRegisterForm = async () => {
+        const { name, email, password } = form;
+
+        // Basic client-side validation
+        if (!name.trim() || !email.trim() || !password.trim()) {
+            return toast.error("All fields are required");
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            return toast.error("Please enter a valid email");
+        }
+        if (password.length < 6) {
+            return toast.error("Password must be at least 6 characters");
+        }
+
         try {
-            const { data } = await axios.post(`http://localhost:8000/auth/register`, form)
+            const { data } = await axios.post(
+                `${process.env.NEXT_PUBLIC_API_URL}/auth/register`,
+                form
+            );
+
             if (data.success) {
-                toast.success(data.message)
-                setForm({ name: "", email: "", password: "" })
+                toast.success(data.message);
+                setForm({ name: "", email: "", password: "" });
+                router.push("/login"); // redirect after success
             } else {
-                toast.error(data.message)
-                console.log(data.message);
+                toast.error(data.message);
             }
         } catch (error: any) {
-            toast.error(error.message)
-            console.log(error.message);
+            const message =
+                error.response?.data?.message || // server error message
+                error.message ||                 // axios/network error
+                "Something went wrong";
+            toast.error(message);
         }
-    }
+    };
 
     return (
         <main className="min-h-screen bg-[#00030f] text-[#F0F4FF] flex items-center justify-center px-6 py-16 relative overflow-hidden">
