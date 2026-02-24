@@ -106,7 +106,7 @@ export default function LoginPage() {
                         </div>
 
                         {/* Submit */}
-                        <motion.button
+                        <motion.div
                             variants={fadeUp}
                             initial="hidden"
                             animate="visible"
@@ -114,7 +114,7 @@ export default function LoginPage() {
                             className="relative w-full mt-5 flex items-center justify-center group"
                         >
                             <PrimaryButton text="Welcome Back" route="" widthFull={true} />
-                        </motion.button>
+                        </motion.div>
 
                         {/* Login link */}
                         <motion.p

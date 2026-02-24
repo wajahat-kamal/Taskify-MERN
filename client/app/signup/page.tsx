@@ -160,7 +160,7 @@ export default function SignupPage() {
                         </motion.p>
 
                         {/* Submit */}
-                        <motion.button
+                        <motion.div
                             onClick={submitRegisterForm}
                             variants={fadeUp}
                             initial="hidden"
@@ -169,7 +169,7 @@ export default function SignupPage() {
                             className="relative w-full mt-5 flex items-center justify-center group"
                         >
                             <PrimaryButton text="Create Account" route="" widthFull={true} onClick={submitRegisterForm} />
-                        </motion.button>
+                        </motion.div>
 
                         {/* Login link */}
                         <motion.p
