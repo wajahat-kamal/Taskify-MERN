@@ -6,10 +6,50 @@ import Link from "next/link";
 import { fadeUp } from "@/components/Hero";
 import { useRouter } from "next/navigation";
 import PrimaryButton from "@/components/PrimaryButton";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 export default function LoginPage() {
     const [showPassword, setShowPassword] = useState(false);
     const router = useRouter()
+
+    const [form, setForm] = useState({ email: "", password: "" })
+
+    const submitLoginForm = async () => {
+        const { email, password } = form;
+
+        // Basic client-side validation
+        if (!email.trim() || !password.trim()) {
+            return toast.error("All fields are required");
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            return toast.error("Please enter a valid email");
+        }
+        if (password.length < 6) {
+            return toast.error("Password must be at least 6 characters");
+        }
+
+        try {
+            const { data } = await axios.post(
+                `${process.env.NEXT_PUBLIC_API_URL}/auth/register`,
+                form
+            );
+
+            if (data.success) {
+                toast.success(data.message);
+                setForm({ email: "", password: "" });
+                router.push("/"); // redirect after success
+            } else {
+                toast.error(data.message);
+            }
+        } catch (error: any) {
+            const message =
+                error.response?.data?.message || // server error message
+                error.message ||                 // axios/network error
+                "Something went wrong";
+            toast.error(message);
+        }
+    };
 
     return (
         <main className="min-h-screen bg-[#00030f] text-[#F0F4FF] flex items-center justify-center px-6 py-16 relative overflow-hidden">
@@ -113,7 +153,7 @@ export default function LoginPage() {
                             custom={0.55}
                             className="relative w-full mt-5 flex items-center justify-center group"
                         >
-                            <PrimaryButton text="Welcome Back" route="" widthFull={true} />
+                            <PrimaryButton text="Welcome Back" route="" widthFull={true} onClick={submitLoginForm} />
                         </motion.div>
 
                         {/* Login link */}
