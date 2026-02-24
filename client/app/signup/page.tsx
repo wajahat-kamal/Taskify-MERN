@@ -161,7 +161,6 @@ export default function SignupPage() {
 
                         {/* Submit */}
                         <motion.div
-                            onClick={submitRegisterForm}
                             variants={fadeUp}
                             initial="hidden"
                             animate="visible"
