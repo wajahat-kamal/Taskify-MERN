@@ -17,8 +17,8 @@ app.use(cookieParser());
 // }))
 app.use(cors())
 
-app.use('/api/auth', authRouter);
-app.use('/api/tasks', protect, taskRouter);
+app.use('/auth', authRouter);
+app.use('/tasks', protect, taskRouter);
 
 app.get("/", (req, res) => {
     res.json("Hello World!")
