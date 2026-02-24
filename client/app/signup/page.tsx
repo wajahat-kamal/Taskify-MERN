@@ -150,7 +150,7 @@ export default function SignupPage() {
                                     <input
                                         onChange={(e) => setForm({ ...form, password: e.target.value })}
                                         type={showPassword ? "text" : "password"}
-                                        placeholder="Min. 8 characters"
+                                        placeholder="Min. 6 characters"
                                         className="w-full bg-white/4 border border-white/8 focus:border-[#4f7eff]/50 focus:bg-[#4f7eff]/4 rounded-xl px-4 py-3 pr-11 text-sm text-[#F0F4FF] placeholder-[#6B7A99] outline-none transition-all duration-300"
                                     />
                                     <button
