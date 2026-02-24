@@ -9,12 +9,13 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({
-    origin: ["http://localhost:3000", "https://taskify-server-wk.vercel.app"],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
-}))
+// app.use(cors({
+//     origin: ["http://localhost:3000", "https://taskify-wk.vercel.app"],
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+//     credentials: true
+// }))
+app.use(cors())
 
 app.use('/api/auth', authRouter);
 app.use('/api/tasks', protect, taskRouter);
