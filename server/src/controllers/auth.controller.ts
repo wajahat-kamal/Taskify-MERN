@@ -4,20 +4,14 @@ import bcryptjs from "bcryptjs";
 import type { Request, Response } from "express";
 import type { LoginBody, RegisterBody } from "../types/authTypes.js";
 
-const generateToken = (res: Response, userId: string): void => {
+const generateToken = (res: Response, userId: string) => {
     if (!process.env.JWT_SECRET) throw new Error("JWT_SECRET not defined!")
     const token = jwt.sign(
         { id: userId },
         process.env.JWT_SECRET,
         { expiresIn: "7d" }
     );
-
-    res.cookie("token", token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
-        maxAge: 7 * 24 * 60 * 60 * 1000
-    });
+    return token
 };
 
 export async function createAccount(req: Request<{}, {}, RegisterBody>, res: Response) {
@@ -107,11 +101,12 @@ export async function login(req: Request<{}, {}, LoginBody>, res: Response) {
         }
 
         // Generate JWT cookie
-        generateToken(res, user._id.toString());
+        const token = generateToken(res, user._id.toString());
 
         return res.status(200).json({
             success: true,
             message: "Login successful",
+            token,
             user: {
                 _id: user._id,
                 name: user.name,
