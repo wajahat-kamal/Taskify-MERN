@@ -199,7 +199,7 @@ export default function SignupPage() {
                             className="text-center text-sm text-[#6B7A99] mt-6"
                         >
                             Already have an account?{" "}
-                            <Link href="/login" className="text-[#4f7eff] font-medium hover:underline">
+                            <Link href="/auth/login" className="text-[#4f7eff] font-medium hover:underline">
                                 Log in
                             </Link>
                         </motion.p>
