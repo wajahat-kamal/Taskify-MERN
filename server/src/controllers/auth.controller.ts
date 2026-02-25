@@ -129,6 +129,17 @@ export async function login(req: Request<{}, {}, LoginBody>, res: Response) {
     }
 }
 
+export async function getMe(req: Request, res: Response) {
+    try {
+        const token = req.cookies.token;
+        const decoded = jwt.verify(token, process.env.JWT_SECRET)
+        const user = await User.findById(decoded.id).select("-password")
+    
+    } catch (error) {
+        
+    }
+}
+
 
 export async function logout(req: Request, res: Response) {
     res.clearCookie("token", {
