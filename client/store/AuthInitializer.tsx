@@ -1,19 +1,25 @@
-import axios from 'axios';
-import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux';
-import { setUser } from './slices/authSlice';
+import axios from "axios";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setUser } from "./slices/authSlice";
 
 function AuthInitializer() {
-    const dispatch = useDispatch()
-    useEffect(() => {
+  const dispatch = useDispatch();
 
-        axios.get(
-            // `${process.env.NEXT_PUBLIC_API_URL}/auth/me`,
-            "http://localhost:8000/auth/me",
-            { withCredentials: true }
-        ).then((res) => dispatch(setUser({ user: res.data.user }))).catch(() => { });
-    })
-    return null
+  useEffect(() => {
+    axios
+      .get(
+        // `${process.env.NEXT_PUBLIC_API_URL}/api/auth/me`,
+        "http://localhost:8000/api/auth/me",
+        { withCredentials: true }
+      )
+      .then((res) => dispatch(setUser({ user: res.data.user })))
+      .catch(() => {
+        // ignore if not logged in
+      });
+  }, []);
+
+  return null;
 }
 
-export default AuthInitializer
+export default AuthInitializer;
