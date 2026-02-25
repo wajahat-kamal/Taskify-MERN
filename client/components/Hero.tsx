@@ -3,6 +3,8 @@ import { motion, Variants } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import DemoButton from "./DemoButton";
 import PrimaryButton from "./PrimaryButton";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 
 export const fadeUp: Variants = {
     hidden: { opacity: 0, y: 32 },
