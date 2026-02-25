@@ -3,8 +3,6 @@ import { motion, Variants } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import DemoButton from "./DemoButton";
 import PrimaryButton from "./PrimaryButton";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store/store";
 
 export const fadeUp: Variants = {
     hidden: { opacity: 0, y: 32 },
@@ -16,7 +14,6 @@ export const fadeUp: Variants = {
 };
 
 export default function HeroSection() {
-    const { user } = useSelector((state: RootState) => state.auth)
 
     return (
         <header className="text-[#F0F4FF] min-h-screen overflow-x-hidden relative flex items-center justify-center bg-[#00030f]">
@@ -76,7 +73,7 @@ export default function HeroSection() {
                         WebkitTextFillColor: "transparent",
                     }}
                 >
-                    Manage Tasks Smarter with AI That Works For You {user?.name}
+                    Manage Tasks Smarter with AI That Works For You
                 </motion.h1>
 
                 {/* Subtext */}

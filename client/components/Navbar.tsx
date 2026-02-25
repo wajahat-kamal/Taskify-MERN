@@ -6,9 +6,29 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { nav_items } from '@/data/generalData';
 import Link from 'next/link';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUser } from '@/store/slices/authSlice';
+import { RootState } from "@/store/store";
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+
+    const { user } = useSelector((state: RootState) => state.auth)
+    const dispatch = useDispatch()
+
+    async function logoutHandler() {
+        try {
+            const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`)
+            if (data.success) {
+                toast.success(data.message)
+                dispatch(setUser({ user: null }))
+            }
+        } catch (error: any) {
+            toast.error(error?.message)
+        }
+    }
 
     return (
         <motion.nav
@@ -38,6 +58,13 @@ function Navbar() {
                         </li>
                     ))}
                 </ul>
+
+                <button
+                    onClick={logoutHandler}
+                    className="hidden md:inline-block bg-(--color-primary) text-white px-5 py-2 rounded-full border-2 hover:text-(--color-primary) hover:bg-[#000310] border-(--color-primary) transition"
+                >
+                    Logout
+                </button>
 
                 {/* Desktop Signup Button */}
                 <Link
