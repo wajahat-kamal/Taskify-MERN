@@ -38,11 +38,12 @@ export async function createAccount(req: Request<{}, {}, RegisterBody>, res: Res
 
         const user = await User.create({ name, email, password: hashedPassword });
 
-        generateToken(res, user._id.toString());
+        const token = generateToken(res, user._id.toString());
 
         return res.status(201).json({
             success: true,
             message: "User created successfully",
+            token,
             user: {
                 _id: user._id,
                 name: user.name,
@@ -52,14 +53,14 @@ export async function createAccount(req: Request<{}, {}, RegisterBody>, res: Res
 
     } catch (error: any) {
         console.error("Error in createAccount:", error);
-    
+
         if (error.code === 11000) {
             return res.status(400).json({
                 success: false,
                 message: "User already exists"
             });
         }
-    
+
         return res.status(500).json({
             success: false,
             message: "Internal server error in creating account"
