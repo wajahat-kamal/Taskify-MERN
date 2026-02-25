@@ -131,12 +131,15 @@ export async function login(req: Request<{}, {}, LoginBody>, res: Response) {
 
 export async function getMe(req: Request, res: Response) {
     try {
-        const token = req.cookies.token;
-        const decoded = jwt.verify(token, process.env.JWT_SECRET)
-        const user = await User.findById(decoded.id).select("-password")
-    
-    } catch (error) {
-        
+        const token = req.cookies.token;  
+        if (!token) return res.status(401).json({ success: false });
+
+        const decoded = jwt.verify(token, process.env.JWT_SECRET!);
+        const user = await User.findById(decoded.id).select("-password");
+
+        return res.status(200).json({ success: true, user });
+    } catch {
+        return res.status(401).json({ success: false });
     }
 }
 
