@@ -9,7 +9,7 @@ import PrimaryButton from "@/components/PrimaryButton";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { setUser } from "@/store/slices/authSlice";
+import { setLoading, setUser } from "@/store/slices/authSlice";
 
 export default function LoginPage() {
     const [showPassword, setShowPassword] = useState(false);
@@ -30,7 +30,7 @@ export default function LoginPage() {
         if (password.length < 6) {
             return toast.error("Password must be at least 6 characters");
         }
-
+        dispatch(setLoading(true))
         try {
             const { data } = await axios.post(
                 // `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
@@ -42,16 +42,18 @@ export default function LoginPage() {
                 toast.success(data.message);
                 setForm({ email: "", password: "" });
                 dispatch(setUser(data.user))
-                router.push("/"); 
+                router.push("/");
             } else {
                 toast.error(data.message);
             }
         } catch (error: any) {
             const message =
-                error.response?.data?.message || 
-                error.message ||            
+                error.response?.data?.message ||
+                error.message ||
                 "Something went wrong";
             toast.error(message);
+        } finally {
+            dispatch(setLoading(true))
         }
     };
 
