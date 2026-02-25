@@ -59,20 +59,23 @@ function Navbar() {
                     ))}
                 </ul>
 
-                <button
-                    onClick={logoutHandler}
-                    className="hidden md:inline-block bg-(--color-primary) text-white px-5 py-2 rounded-full border-2 hover:text-(--color-primary) hover:bg-[#000310] border-(--color-primary) transition"
-                >
-                    Logout
-                </button>
+                {user ? (
+                    <button
+                        onClick={logoutHandler}
+                        className="hidden md:inline-block bg-(--color-primary) text-white px-5 py-2 rounded-full border-2 hover:text-(--color-primary) hover:bg-[#000310] border-(--color-primary) transition"
+                    >
+                        Logout
+                    </button>
+                ) : (
 
-                {/* Desktop Signup Button */}
-                <Link
-                    href="/auth/login"
-                    className="hidden md:inline-block bg-(--color-primary) text-white px-5 py-2 rounded-full border-2 hover:text-(--color-primary) hover:bg-[#000310] border-(--color-primary) transition"
-                >
-                    Login
-                </Link>
+                    <Link
+                        href="/auth/login"
+                        className="hidden md:inline-block bg-(--color-primary) text-white px-5 py-2 rounded-full border-2 hover:text-(--color-primary) hover:bg-[#000310] border-(--color-primary) transition"
+                    >
+                        Login
+                    </Link>
+
+                )}
 
                 {/* Mobile Menu Toggle */}
                 <button
@@ -113,7 +116,7 @@ function Navbar() {
                     </li>
                 </ul>
             </div>
-        </motion.nav>
+        </motion.nav >
     );
 }
 
