@@ -30,8 +30,8 @@ export default function LoginPage() {
 
         try {
             const { data } = await axios.post(
-                // `${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`,
-                "http://localhost:8000/api/auth/login",
+                // `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
+                "http://localhost:8000/auth/login",
                 form,
                 { withCredentials: true }
             );

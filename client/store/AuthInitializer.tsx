@@ -9,8 +9,8 @@ function AuthInitializer() {
   useEffect(() => {
     axios
       .get(
-        // `${process.env.NEXT_PUBLIC_API_URL}/api/auth/me`,
-        "http://localhost:8000/api/auth/me",
+        // `${process.env.NEXT_PUBLIC_API_URL}/auth/me`,
+        "http://localhost:8000/auth/me",
         { withCredentials: true }
       )
       .then((res) => dispatch(setUser({ user: res.data.user })))
