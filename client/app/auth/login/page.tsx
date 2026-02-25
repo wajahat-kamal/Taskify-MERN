@@ -41,8 +41,8 @@ export default function LoginPage() {
             if (data.success) {
                 toast.success(data.message);
                 setForm({ email: "", password: "" });
-                router.push("/"); 
                 dispatch(setUser(data.user))
+                router.push("/"); 
             } else {
                 toast.error(data.message);
             }

@@ -9,12 +9,12 @@ import PrimaryButton from "@/components/PrimaryButton";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { setUser } from "@/store/slices/authSlice";
+import { setLoading, setUser } from "@/store/slices/authSlice";
 
 export default function SignupPage() {
     const [showPassword, setShowPassword] = useState(false);
-    const router = useRouter()
     const [form, setForm] = useState({ name: "", email: "", password: "" })
+    const router = useRouter()
     const dispatch = useDispatch()
 
     const submitRegisterForm = async () => {
@@ -30,7 +30,7 @@ export default function SignupPage() {
         if (password.length < 6) {
             return toast.error("Password must be at least 6 characters");
         }
-
+        dispatch(setLoading(true))
         try {
             const { data } = await axios.post(
                 // `${process.env.NEXT_PUBLIC_API_URL}/auth/register`,
@@ -41,17 +41,19 @@ export default function SignupPage() {
             if (data.success) {
                 toast.success(data.message);
                 setForm({ name: "", email: "", password: "" });
-                router.push("/"); 
                 dispatch(setUser(data.user))
+                router.push("/");
             } else {
                 toast.error(data.message);
             }
         } catch (error: any) {
             const message =
-                error.response?.data?.message || 
-                error.message ||                 
+                error.response?.data?.message ||
+                error.message ||
                 "Something went wrong";
             toast.error(message);
+        } finally {
+            dispatch(setLoading(false))
         }
     };
 
