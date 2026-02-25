@@ -39,6 +39,8 @@ export default function LoginPage() {
                 toast.success(data.message);
                 setForm({ email: "", password: "" });
                 router.push("/"); // redirect after success
+                console.log(data.token);
+                
             } else {
                 toast.error(data.message);
             }
