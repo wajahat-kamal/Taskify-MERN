@@ -8,11 +8,13 @@ import { useRouter } from "next/navigation";
 import PrimaryButton from "@/components/PrimaryButton";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setUser } from "@/store/slices/authSlice";
 
 export default function LoginPage() {
     const [showPassword, setShowPassword] = useState(false);
     const router = useRouter()
-
+    const dispatch = useDispatch()
     const [form, setForm] = useState({ email: "", password: "" })
 
     const submitLoginForm = async () => {
@@ -40,7 +42,10 @@ export default function LoginPage() {
                 toast.success(data.message);
                 setForm({ email: "", password: "" });
                 router.push("/"); // redirect after success
-                console.log(data.token);
+                dispatch(setUser({
+                    user: data.user,
+                    token: data.token
+                }))
                 
             } else {
                 toast.error(data.message);
