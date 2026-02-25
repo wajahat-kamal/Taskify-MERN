@@ -13,8 +13,8 @@ import { setLoading, setUser } from "@/store/slices/authSlice";
 
 export default function LoginPage() {
     const [showPassword, setShowPassword] = useState(false);
-    const router = useRouter()
     const [form, setForm] = useState({ email: "", password: "" })
+    const router = useRouter()
     const dispatch = useDispatch()
 
     const submitLoginForm = async () => {
@@ -53,7 +53,7 @@ export default function LoginPage() {
                 "Something went wrong";
             toast.error(message);
         } finally {
-            dispatch(setLoading(true))
+            dispatch(setLoading(false))
         }
     };
 
