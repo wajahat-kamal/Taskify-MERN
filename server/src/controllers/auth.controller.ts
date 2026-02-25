@@ -11,7 +11,13 @@ const generateToken = (res: Response, userId: string) => {
         process.env.JWT_SECRET,
         { expiresIn: "7d" }
     );
-    return token
+    // Backend — generateToken
+    res.cookie("token", token, {
+        httpOnly: true,      // JS se access nahi hoga
+        secure: true,        // Sirf HTTPS pe
+        sameSite: "strict",  // CSRF protection
+        maxAge: 7 * 24 * 60 * 60 * 1000
+    });
 };
 
 export async function createAccount(req: Request<{}, {}, RegisterBody>, res: Response) {
@@ -38,12 +44,11 @@ export async function createAccount(req: Request<{}, {}, RegisterBody>, res: Res
 
         const user = await User.create({ name, email, password: hashedPassword });
 
-        const token = generateToken(res, user._id.toString());
+        generateToken(res, user._id.toString());
 
         return res.status(201).json({
             success: true,
             message: "User created successfully",
-            token,
             user: {
                 _id: user._id,
                 name: user.name,
@@ -102,12 +107,11 @@ export async function login(req: Request<{}, {}, LoginBody>, res: Response) {
         }
 
         // Generate JWT cookie
-        const token = generateToken(res, user._id.toString());
+        generateToken(res, user._id.toString());
 
         return res.status(200).json({
             success: true,
             message: "Login successful",
-            token,
             user: {
                 _id: user._id,
                 name: user.name,
