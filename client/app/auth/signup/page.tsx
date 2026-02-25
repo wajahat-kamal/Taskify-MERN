@@ -8,11 +8,13 @@ import { useRouter } from "next/navigation";
 import PrimaryButton from "@/components/PrimaryButton";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { setUser } from "@/store/slices/authSlice";
 
 export default function SignupPage() {
     const [showPassword, setShowPassword] = useState(false);
     const router = useRouter()
-
+    const dispatch = useDispatch()
     const [form, setForm] = useState({ name: "", email: "", password: "" })
 
     const submitRegisterForm = async () => {
@@ -39,6 +41,7 @@ export default function SignupPage() {
                 toast.success(data.message);
                 setForm({ name: "", email: "", password: "" });
                 router.push("/"); // redirect after success
+                dispatch(setUser({ user: data.user, token: data.token }))
             } else {
                 toast.error(data.message);
             }
