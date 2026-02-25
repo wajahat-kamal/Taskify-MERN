@@ -9,7 +9,7 @@ import Link from 'next/link';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUser } from '@/store/slices/authSlice';
+import { logout } from '@/store/slices/authSlice';
 import { RootState } from "@/store/store";
 
 function Navbar() {
@@ -23,7 +23,7 @@ function Navbar() {
             const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`)
             if (data.success) {
                 toast.success(data.message)
-                dispatch(setUser({ user: null }))
+                dispatch(logout())
             }
         } catch (error: any) {
             toast.error(error?.message)
