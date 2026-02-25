@@ -41,10 +41,10 @@ function Navbar() {
 
                 {/* Desktop Signup Button */}
                 <Link
-                    href="/auth/signup"
+                    href="/auth/login"
                     className="hidden md:inline-block bg-(--color-primary) text-white px-5 py-2 rounded-full border-2 hover:text-(--color-primary) hover:bg-[#000310] border-(--color-primary) transition"
                 >
-                    Signup
+                    Login
                 </Link>
 
                 {/* Mobile Menu Toggle */}
@@ -77,11 +77,11 @@ function Navbar() {
                     {/* ✅ Mobile Signup Button */}
                     <li className="mt-2">
                         <Link
-                            href="/auth/signup"
+                            href="/auth/login"
                             onClick={() => setIsOpen(false)}
                             className="block w-full text-center bg-(--color-primary) text-white font-semibold px-5 py-2 rounded-full hover:bg-[#000310] transition"
                         >
-                            Signup
+                            Login
                         </Link>
                     </li>
                 </ul>
