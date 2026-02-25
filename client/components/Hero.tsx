@@ -16,7 +16,7 @@ export const fadeUp: Variants = {
 };
 
 export default function HeroSection() {
-    const {user} = useSelector((state: RootState) => state.auth)
+    const { user } = useSelector((state: RootState) => state.auth)
 
     return (
         <header className="text-[#F0F4FF] min-h-screen overflow-x-hidden relative flex items-center justify-center bg-[#00030f]">

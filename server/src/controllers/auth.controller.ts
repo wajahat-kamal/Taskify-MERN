@@ -5,19 +5,23 @@ import type { Request, Response } from "express";
 import type { LoginBody, RegisterBody } from "../types/authTypes.js";
 
 const generateToken = (res: Response, userId: string) => {
-    if (!process.env.JWT_SECRET) throw new Error("JWT_SECRET not defined!")
-    const token = jwt.sign(
-        { id: userId },
-        process.env.JWT_SECRET,
-        { expiresIn: "7d" }
-    );
-    // Backend — generateToken
-    res.cookie("token", token, {
-        httpOnly: true,      // JS se access nahi hoga
-        secure: true,        // Sirf HTTPS pe
-        sameSite: "strict",  // CSRF protection
-        maxAge: 7 * 24 * 60 * 60 * 1000
-    });
+  if (!process.env.JWT_SECRET) throw new Error("JWT_SECRET not defined!");
+
+  const token = jwt.sign(
+    { id: userId },
+    process.env.JWT_SECRET,
+    { expiresIn: "7d" }
+  );
+
+  // Cookie options: dev (http://localhost) vs production (https)
+  const isProduction = process.env.NODE_ENV === "production";
+
+  res.cookie("token", token, {
+    httpOnly: true,
+    secure: isProduction,     // localhost pe false, production pe true
+    sameSite: isProduction ? "strict" : "lax",
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+  });
 };
 
 export async function createAccount(req: Request<{}, {}, RegisterBody>, res: Response) {
