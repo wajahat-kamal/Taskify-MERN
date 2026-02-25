@@ -42,7 +42,7 @@ export default function LoginPage() {
                 toast.success(data.message);
                 setForm({ email: "", password: "" });
                 router.push("/"); 
-                dispatch(setUser({user: data.user}))
+                dispatch(setUser(data.user))
             } else {
                 toast.error(data.message);
             }
