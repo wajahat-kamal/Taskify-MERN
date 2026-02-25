@@ -1,5 +1,5 @@
 import User from "../models/User.js";
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 import bcryptjs from "bcryptjs";
 import type { Request, Response } from "express";
 import type { LoginBody, RegisterBody } from "../types/authTypes.js";
@@ -134,7 +134,7 @@ export async function getMe(req: Request, res: Response) {
         const token = req.cookies.token;  
         if (!token) return res.status(401).json({ success: false });
 
-        const decoded = jwt.verify(token, process.env.JWT_SECRET!);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET!) as JwtPayload;
         const user = await User.findById(decoded.id).select("-password");
 
         return res.status(200).json({ success: true, user });
