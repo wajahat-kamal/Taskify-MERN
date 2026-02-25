@@ -167,7 +167,7 @@ export default function LoginPage() {
                             className="text-center text-sm text-[#6B7A99] mt-6"
                         >
                             Don't have an account?{" "}
-                            <Link href="/signup" className="text-[#4f7eff] font-medium hover:underline">
+                            <Link href="/auth/signup" className="text-[#4f7eff] font-medium hover:underline">
                                 Signup
                             </Link>
                         </motion.p>
