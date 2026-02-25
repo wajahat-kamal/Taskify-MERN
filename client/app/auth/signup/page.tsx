@@ -8,11 +8,14 @@ import { useRouter } from "next/navigation";
 import PrimaryButton from "@/components/PrimaryButton";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { setUser } from "@/store/slices/authSlice";
 
 export default function SignupPage() {
     const [showPassword, setShowPassword] = useState(false);
     const router = useRouter()
     const [form, setForm] = useState({ name: "", email: "", password: "" })
+    const dispatch = useDispatch()
 
     const submitRegisterForm = async () => {
         const { name, email, password } = form;
@@ -38,14 +41,15 @@ export default function SignupPage() {
             if (data.success) {
                 toast.success(data.message);
                 setForm({ name: "", email: "", password: "" });
-                router.push("/"); // redirect after success
+                router.push("/"); 
+                dispatch(setUser({user: data.user}))
             } else {
                 toast.error(data.message);
             }
         } catch (error: any) {
             const message =
-                error.response?.data?.message || // server error message
-                error.message ||                 // axios/network error
+                error.response?.data?.message || 
+                error.message ||                 
                 "Something went wrong";
             toast.error(message);
         }
