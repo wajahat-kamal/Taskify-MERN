@@ -16,6 +16,7 @@ export const fadeUp: Variants = {
 };
 
 export default function HeroSection() {
+    const {user} = useSelector((state: RootState) => state.auth)
 
     return (
         <header className="text-[#F0F4FF] min-h-screen overflow-x-hidden relative flex items-center justify-center bg-[#00030f]">
@@ -75,7 +76,7 @@ export default function HeroSection() {
                         WebkitTextFillColor: "transparent",
                     }}
                 >
-                    Manage Tasks Smarter with AI That Works For You
+                    Manage Tasks Smarter with AI That Works For You {user?.name}
                 </motion.h1>
 
                 {/* Subtext */}
