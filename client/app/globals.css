@@ -3,7 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --color-primary: #656FE4;
+  --color-primary: #4F39F6;
 }
 @theme inline {
   --color-background: var(--background);
