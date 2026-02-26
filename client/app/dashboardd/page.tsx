@@ -70,29 +70,6 @@ export default function TaskDashboard() {
 
   return (
     <div style={{ fontFamily: "'DM Sans', sans-serif" }} className="min-h-screen bg-[#0c0d12] text-white">
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono&display=swap');
-        * { box-sizing: border-box; }
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #2a2d3a; border-radius: 4px; }
-        .card { transition: transform 0.18s ease, background 0.18s ease; cursor: pointer; }
-        .card:hover { transform: translateY(-3px); background: #191c28 !important; }
-        .fade-in { animation: fi 0.5s ease both; }
-        @keyframes fi { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform: none; } }
-        .stagger > * { animation: fi 0.4s ease both; }
-        .stagger > *:nth-child(1){animation-delay:.05s} .stagger > *:nth-child(2){animation-delay:.10s}
-        .stagger > *:nth-child(3){animation-delay:.15s} .stagger > *:nth-child(4){animation-delay:.20s}
-        .stagger > *:nth-child(5){animation-delay:.25s} .stagger > *:nth-child(6){animation-delay:.30s}
-        .stagger > *:nth-child(7){animation-delay:.35s} .stagger > *:nth-child(8){animation-delay:.40s}
-        .pill { transition: all .15s ease; }
-        .overlay { animation: ov .2s ease; }
-        @keyframes ov { from{opacity:0} to{opacity:1} }
-        .modal { animation: md .25s cubic-bezier(.34,1.56,.64,1); }
-        @keyframes md { from{opacity:0;transform:scale(.93) translateY(12px)} to{opacity:1;transform:none} }
-        input:focus { outline: none; }
-        .progress-ring { transform: rotate(-90deg); }
-      `}</style>
 
       {/* Sidebar */}
       <aside className="fixed left-0 top-0 h-full w-[60px] bg-[#0e0f16] border-r border-white/[0.04] flex flex-col items-center py-5 gap-5 z-20">

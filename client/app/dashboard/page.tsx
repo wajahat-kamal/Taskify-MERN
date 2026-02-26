@@ -29,7 +29,46 @@ function page() {
                     </div>
                 </header>
 
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 stagger">
 
+                    {/* Circular progress */}
+                    <div className="bg-[#13141d] border border-white/[0.05] rounded-2xl p-5 flex items-center gap-4">
+                        <div className="relative w-14 h-14 shrink-0">
+                            <svg width="56" height="56" className="progress-ring">
+                                <circle cx="28" cy="28" r="22" fill="none" stroke="#1e2030" strokeWidth="5" />
+                                <circle cx="28" cy="28" r="22" fill="none" stroke="#6366f1" strokeWidth="5"
+                                    strokeDasharray={`${2 * Math.PI * 22}`}
+                                    strokeDashoffset={`${2 * Math.PI * 22 * (1 - 25 / 100)}`}
+                                    strokeLinecap="round"
+                                    style={{ transition: "stroke-dashoffset 1s ease" }}
+                                />
+                            </svg>
+                            <span className="absolute inset-0 flex items-center justify-center text-xs font-bold text-indigo-400">25%</span>
+                        </div>
+                        <div>
+                            <p className="text-slate-500 text-xs mb-0.5">Progress</p>
+                            <p className="text-white font-semibold text-sm">2/8 done</p>
+                        </div>
+                    </div>
+
+                    <div className="bg-[#13141d] border border-white/[0.05] rounded-2xl p-5">
+                        <p className="text-slate-500 text-xs uppercase tracking-wider mb-2">Total</p>
+                        <p className="text-3xl font-bold text-white">8</p>
+                        <p className="text-slate-600 text-xs mt-1">all tasks</p>
+                    </div>
+
+                    <div className="bg-[#13141d] border border-white/[0.05] rounded-2xl p-5">
+                        <p className="text-slate-500 text-xs uppercase tracking-wider mb-2">Pending</p>
+                        <p className="text-3xl font-bold text-amber-400">2</p>
+                        <p className="text-slate-600 text-xs mt-1">not completed</p>
+                    </div>
+
+                    <div className="bg-[#13141d] border border-white/[0.05] rounded-2xl p-5">
+                        <p className="text-slate-500 text-xs uppercase tracking-wider mb-2">Overdue</p>
+                        <p className="text-3xl font-bold text-rose-400">6</p>
+                        <p className="text-slate-600 text-xs mt-1">past due date</p>
+                    </div>
+                </div>
 
             </main>
         </div>
