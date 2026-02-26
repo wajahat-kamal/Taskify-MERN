@@ -53,7 +53,7 @@ function page() {
                     </div>
 
                     {[
-                        { title: "Total", numbers: 8, para: "all tasks", numColor: "text-white"},
+                        { title: "Total", numbers: 8, para: "all tasks", numColor: "text-white" },
                         { title: "Pending", numbers: 2, para: "not completed", numColor: "text-amber-400" },
                         { title: "Overdue", numbers: 6, para: "past due date", numColor: "text-rose-400" },
                     ].map((item) => (
@@ -65,6 +65,19 @@ function page() {
                     ))}
                 </div>
 
+                {/* Filters */}
+                <div className="flex flex-wrap items-center gap-3 mb-5">
+                    <div className="relative flex-1 min-w-48">
+                        <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 text-sm">🔍</span>
+                        <input
+                            type="text"
+                            placeholder="Search by title or description…"
+                            // value={search}
+                            // onChange={(e) => setSearch(e.target.value)}
+                            className="w-full bg-[#13141d] border border-white/6 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-slate-600 focus:border-indigo-500/40"
+                        />
+                    </div>
+                </div>
             </main>
         </div>
     )
