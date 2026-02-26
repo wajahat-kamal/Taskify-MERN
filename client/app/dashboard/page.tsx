@@ -41,8 +41,8 @@ function Dashboard() {
                     {/* Right — actions */}
                     <div className="flex items-center gap-3">
                         <button className="flex items-center gap-2 px-4 py-3 rounded-xl font-medium text-sm text-white
-      bg-indigo-600 hover:bg-indigo-500 active:scale-95
-      shadow-lg shadow-indigo-500/20
+      bg-(--color-primary)/90 hover:bg-(--color-primary) active:scale-95
+      shadow-lg shadow-indigo-500/20 cursor-pointer
       transition-all duration-150">
                             <Plus size={15} />
                             <span className="hidden md:inline">Create Task</span>
