@@ -51,23 +51,19 @@ function page() {
                         </div>
                     </div>
 
-                    <div className="bg-[#13141d] border border-white/[0.05] rounded-2xl p-5">
-                        <p className="text-slate-500 text-xs uppercase tracking-wider mb-2">Total</p>
-                        <p className="text-3xl font-bold text-white">8</p>
-                        <p className="text-slate-600 text-xs mt-1">all tasks</p>
-                    </div>
+                    
 
-                    <div className="bg-[#13141d] border border-white/[0.05] rounded-2xl p-5">
-                        <p className="text-slate-500 text-xs uppercase tracking-wider mb-2">Pending</p>
-                        <p className="text-3xl font-bold text-amber-400">2</p>
-                        <p className="text-slate-600 text-xs mt-1">not completed</p>
-                    </div>
-
-                    <div className="bg-[#13141d] border border-white/[0.05] rounded-2xl p-5">
-                        <p className="text-slate-500 text-xs uppercase tracking-wider mb-2">Overdue</p>
-                        <p className="text-3xl font-bold text-rose-400">6</p>
-                        <p className="text-slate-600 text-xs mt-1">past due date</p>
-                    </div>
+                    {[
+                        { title: "Total", numbers: 8, para: "all tasks", numColor: "text-white"},
+                        { title: "Pending", numbers: 2, para: "not completed", numColor: "text-amber-400" },
+                        { title: "Overdue", numbers: 6, para: "past due date", numColor: "text-rose-400" },
+                    ].map((item) => (
+                        <div className="bg-[#13141d] border border-white/5 rounded-2xl p-5">
+                            <p className="text-slate-500 text-xs uppercase tracking-wider mb-2">{item.title}</p>
+                            <p className={`text-3xl font-bold ${item.numColor}`}>{item.numbers}</p>
+                            <p className="text-slate-600 text-xs mt-1">{item.para}</p>
+                        </div>
+                    ))}
                 </div>
 
             </main>
