@@ -37,7 +37,7 @@ const statusConfig: Record<Status, { label: string; bg: string; text: string }> 
   "done":        { label: "Done",        bg: "bg-emerald-900", text: "text-emerald-300" },
 };
 
-export default function TaskDashboard() {
+export default function Dashboard() {
   const [search, setSearch] = useState("");
   const [filterStatus, setFilterStatus] = useState<Status | "all">("all");
   const [filterPriority, setFilterPriority] = useState<Priority | "all">("all");
