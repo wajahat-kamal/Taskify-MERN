@@ -117,6 +117,7 @@ export default function LoginPage() {
                                     Email Address
                                 </label>
                                 <input
+                                    autoFocus
                                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                                     type="email"
                                     placeholder="john@example.com"
