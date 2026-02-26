@@ -17,6 +17,7 @@ function page() {
 
             <main className='ml-16 p-8 fade-in'>
 
+                {/* Header */}
                 <header className="flex items-center justify-between mb-10">
                     <div>
                         <p className="text-slate-500 text-sm">Welcome back,</p>
@@ -29,6 +30,7 @@ function page() {
                     </div>
                 </header>
 
+                {/* Stats */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 stagger">
                     {/* Circular progress */}
                     <div className="bg-[#13141d] border border-white/5 rounded-2xl p-5 flex items-center gap-4">
