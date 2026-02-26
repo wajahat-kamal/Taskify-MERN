@@ -117,6 +117,7 @@ export default function SignupPage() {
                                     Full Name
                                 </label>
                                 <input
+                                    autoFocus
                                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                                     type="text"
                                     placeholder="John Doe"
