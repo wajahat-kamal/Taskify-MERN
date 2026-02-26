@@ -26,6 +26,9 @@ function page() {
                         <p className="text-slate-500 text-sm mt-1">{new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}</p>
                     </div>
                 </header>
+
+                
+
             </main>
         </div>
     )

@@ -2,245 +2,321 @@
 import { useState } from "react";
 
 type Priority = "high" | "medium" | "low";
-type Status = "todo" | "in-progress" | "done";
 
-interface Task {
-  id: number;
+interface ITask {
+  _id: string;
+  userId: string;
   title: string;
-  description: string;
+  description?: string;
+  completed: boolean;
   priority: Priority;
-  status: Status;
-  category: string;
-  dueDate: string;
-  assignee: string;
+  dueDate?: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
-const mockTasks: Task[] = [
-  { id: 1, title: "Design new landing page", description: "Create wireframes and mockups for the new marketing landing page.", priority: "high", status: "in-progress", category: "Design", dueDate: "2026-03-05", assignee: "Sarah K." },
-  { id: 2, title: "Fix auth bug on login", description: "Users are getting logged out after 5 minutes unexpectedly.", priority: "high", status: "todo", category: "Engineering", dueDate: "2026-02-28", assignee: "You" },
-  { id: 3, title: "Write Q1 report", description: "Summarize performance metrics and KPIs for Q1.", priority: "medium", status: "todo", category: "Management", dueDate: "2026-03-10", assignee: "You" },
-  { id: 4, title: "Update API documentation", description: "Reflect recent endpoint changes in the public docs.", priority: "low", status: "done", category: "Engineering", dueDate: "2026-02-20", assignee: "Tom R." },
-  { id: 5, title: "User interviews — March batch", description: "Schedule and conduct 6 user interviews for UX research.", priority: "medium", status: "in-progress", category: "Research", dueDate: "2026-03-15", assignee: "You" },
-  { id: 6, title: "Set up CI/CD pipeline", description: "Configure GitHub Actions for automated deployment.", priority: "high", status: "done", category: "Engineering", dueDate: "2026-02-18", assignee: "Tom R." },
-  { id: 7, title: "Onboard new designer", description: "Prepare onboarding docs and set up tools access.", priority: "low", status: "todo", category: "Management", dueDate: "2026-03-01", assignee: "You" },
-  { id: 8, title: "Migrate to PostgreSQL", description: "Move from SQLite to Postgres for production readiness.", priority: "medium", status: "in-progress", category: "Engineering", dueDate: "2026-03-20", assignee: "Sarah K." },
+// Mock data matching your schema exactly
+const mockTasks: ITask[] = [
+  { _id: "6601a1", userId: "u1", title: "Design new landing page", description: "Create wireframes and mockups for the new marketing landing page.", completed: false, priority: "high", dueDate: "2026-03-05", createdAt: "2026-02-10T09:00:00Z", updatedAt: "2026-02-20T11:00:00Z" },
+  { _id: "6601a2", userId: "u1", title: "Fix auth bug on login", description: "Users are getting logged out after 5 minutes unexpectedly.", completed: false, priority: "high", dueDate: "2026-02-28", createdAt: "2026-02-12T10:00:00Z", updatedAt: "2026-02-22T08:00:00Z" },
+  { _id: "6601a3", userId: "u1", title: "Write Q1 report", description: "Summarize performance metrics and KPIs for Q1.", completed: false, priority: "medium", dueDate: "2026-03-10", createdAt: "2026-02-14T08:30:00Z", updatedAt: "2026-02-14T08:30:00Z" },
+  { _id: "6601a4", userId: "u1", title: "Update API documentation", description: "Reflect recent endpoint changes in the public docs.", completed: true, priority: "low", dueDate: "2026-02-20", createdAt: "2026-02-01T12:00:00Z", updatedAt: "2026-02-19T16:00:00Z" },
+  { _id: "6601a5", userId: "u1", title: "User interviews — March batch", description: "Schedule and conduct 6 user interviews for UX research.", completed: false, priority: "medium", dueDate: "2026-03-15", createdAt: "2026-02-15T09:00:00Z", updatedAt: "2026-02-15T09:00:00Z" },
+  { _id: "6601a6", userId: "u1", title: "Set up CI/CD pipeline", description: "Configure GitHub Actions for automated deployment.", completed: true, priority: "high", createdAt: "2026-02-05T07:00:00Z", updatedAt: "2026-02-18T14:00:00Z" },
+  { _id: "6601a7", userId: "u1", title: "Onboard new designer", description: "Prepare onboarding docs and set up tools access.", completed: false, priority: "low", dueDate: "2026-03-01", createdAt: "2026-02-18T11:00:00Z", updatedAt: "2026-02-18T11:00:00Z" },
+  { _id: "6601a8", userId: "u1", title: "Migrate to PostgreSQL", completed: false, priority: "medium", dueDate: "2026-03-20", createdAt: "2026-02-20T10:00:00Z", updatedAt: "2026-02-20T10:00:00Z" },
 ];
 
-const priorityConfig: Record<Priority, { label: string; color: string; dot: string }> = {
-  high: { label: "High", color: "text-rose-400", dot: "bg-rose-400" },
-  medium: { label: "Medium", color: "text-amber-400", dot: "bg-amber-400" },
-  low: { label: "Low", color: "text-emerald-400", dot: "bg-emerald-400" },
+const priorityConfig: Record<Priority, { label: string; color: string; dot: string; ring: string }> = {
+  high:   { label: "High",   color: "text-rose-400",    dot: "bg-rose-400",    ring: "ring-rose-400/20" },
+  medium: { label: "Medium", color: "text-amber-400",   dot: "bg-amber-400",   ring: "ring-amber-400/20" },
+  low:    { label: "Low",    color: "text-emerald-400", dot: "bg-emerald-400", ring: "ring-emerald-400/20" },
 };
 
-const statusConfig: Record<Status, { label: string; bg: string; text: string }> = {
-  "todo": { label: "To Do", bg: "bg-slate-700", text: "text-slate-300" },
-  "in-progress": { label: "In Progress", bg: "bg-indigo-900", text: "text-indigo-300" },
-  "done": { label: "Done", bg: "bg-emerald-900", text: "text-emerald-300" },
-};
+function formatDate(iso: string) {
+  return new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+}
 
-export default function Dashboard() {
-  const [search, setSearch] = useState("");
-  const [filterStatus, setFilterStatus] = useState<Status | "all">("all");
-  const [filterPriority, setFilterPriority] = useState<Priority | "all">("all");
-  const [selectedTask, setSelectedTask] = useState<Task | null>(null);
+function isOverdue(dueDate?: string, completed?: boolean) {
+  if (!dueDate || completed) return false;
+  return new Date(dueDate) < new Date();
+}
 
-  const user = JSON.parse(localStorage.getItem("user") || '{"name":"Alex","email":"alex@example.com"}');
+export default function TaskDashboard() {
+  const [search, setSearch]                   = useState("");
+  const [filterCompleted, setFilterCompleted] = useState<"all" | "pending" | "completed">("all");
+  const [filterPriority, setFilterPriority]   = useState<Priority | "all">("all");
+  const [selectedTask, setSelectedTask]       = useState<ITask | null>(null);
+
+  const user = (() => {
+    try { return JSON.parse(localStorage.getItem("user") || "{}"); }
+    catch { return { name: "User", email: "" }; }
+  })();
 
   const filtered = mockTasks.filter((t) => {
-    const matchSearch = t.title.toLowerCase().includes(search.toLowerCase()) || t.category.toLowerCase().includes(search.toLowerCase());
-    const matchStatus = filterStatus === "all" || t.status === filterStatus;
+    const matchSearch   = t.title.toLowerCase().includes(search.toLowerCase()) ||
+                          (t.description ?? "").toLowerCase().includes(search.toLowerCase());
+    const matchComplete = filterCompleted === "all"
+      ? true : filterCompleted === "completed" ? t.completed : !t.completed;
     const matchPriority = filterPriority === "all" || t.priority === filterPriority;
-    return matchSearch && matchStatus && matchPriority;
+    return matchSearch && matchComplete && matchPriority;
   });
 
-  const counts = {
-    all: mockTasks.length,
-    todo: mockTasks.filter((t) => t.status === "todo").length,
-    "in-progress": mockTasks.filter((t) => t.status === "in-progress").length,
-    done: mockTasks.filter((t) => t.status === "done").length,
-  };
+  const total     = mockTasks.length;
+  const completed = mockTasks.filter((t) => t.completed).length;
+  const pending   = total - completed;
+  const overdue   = mockTasks.filter((t) => isOverdue(t.dueDate, t.completed)).length;
+  const pct       = total ? Math.round((completed / total) * 100) : 0;
 
   return (
-    <div className="min-h-screen bg-[#0e0f14] text-white">
+    <div style={{ fontFamily: "'DM Sans', sans-serif" }} className="min-h-screen bg-[#0c0d12] text-white">
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono&display=swap');
+        * { box-sizing: border-box; }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #2a2d3a; border-radius: 4px; }
+        .card { transition: transform 0.18s ease, background 0.18s ease; cursor: pointer; }
+        .card:hover { transform: translateY(-3px); background: #191c28 !important; }
+        .fade-in { animation: fi 0.5s ease both; }
+        @keyframes fi { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform: none; } }
+        .stagger > * { animation: fi 0.4s ease both; }
+        .stagger > *:nth-child(1){animation-delay:.05s} .stagger > *:nth-child(2){animation-delay:.10s}
+        .stagger > *:nth-child(3){animation-delay:.15s} .stagger > *:nth-child(4){animation-delay:.20s}
+        .stagger > *:nth-child(5){animation-delay:.25s} .stagger > *:nth-child(6){animation-delay:.30s}
+        .stagger > *:nth-child(7){animation-delay:.35s} .stagger > *:nth-child(8){animation-delay:.40s}
+        .pill { transition: all .15s ease; }
+        .overlay { animation: ov .2s ease; }
+        @keyframes ov { from{opacity:0} to{opacity:1} }
+        .modal { animation: md .25s cubic-bezier(.34,1.56,.64,1); }
+        @keyframes md { from{opacity:0;transform:scale(.93) translateY(12px)} to{opacity:1;transform:none} }
+        input:focus { outline: none; }
+        .progress-ring { transform: rotate(-90deg); }
+      `}</style>
 
       {/* Sidebar */}
-      <div className="fixed left-0 top-0 h-full w-16 bg-[#13141b] flex flex-col items-center py-6 gap-6 border-r border-white/5 z-10">
-        <div className="w-8 h-8 rounded-lg bg-indigo-500 flex items-center justify-center text-sm font-bold">T</div>
-        {["📋", "📊", "👥", "⚙️"].map((icon, i) => (
-          <button key={i} className={`w-10 h-10 rounded-xl flex items-center justify-center text-lg transition-all hover:bg-white/10 ${i === 0 ? "bg-white/10" : ""}`}>{icon}</button>
+      <aside className="fixed left-0 top-0 h-full w-[60px] bg-[#0e0f16] border-r border-white/[0.04] flex flex-col items-center py-5 gap-5 z-20">
+        <div className="w-9 h-9 rounded-xl bg-indigo-500 flex items-center justify-center font-bold text-sm shadow-lg shadow-indigo-500/30">T</div>
+        {[
+          { icon: "▤", active: true },
+          { icon: "◫", active: false },
+          { icon: "◉", active: false },
+          { icon: "⚙", active: false },
+        ].map((item, i) => (
+          <button key={i} className={`w-10 h-10 rounded-xl flex items-center justify-center text-base transition-all ${item.active ? "bg-indigo-500/20 text-indigo-400" : "text-slate-600 hover:text-slate-400 hover:bg-white/5"}`}>
+            {item.icon}
+          </button>
         ))}
-        <div className="mt-auto w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center text-xs font-semibold">
-          {user.name?.[0]?.toUpperCase() || "U"}
+        <div className="mt-auto w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-xs font-bold">
+          {(user.name?.[0] ?? "U").toUpperCase()}
         </div>
-      </div>
+      </aside>
 
-      {/* Main */}
-      <div className="ml-16 p-8 fade-in">
+      {/* Main content */}
+      <main className="ml-[60px] p-8 max-w-[1200px] fade-in">
 
         {/* Header */}
-        <div className="flex items-start justify-between mb-8">
+        <header className="flex items-center justify-between mb-10">
           <div>
-            <p className="text-slate-400 text-sm mb-1">Good morning,</p>
-            <h1 className="text-2xl font-semibold tracking-tight">{user.name} 👋</h1>
+            <p className="text-slate-500 text-sm">Welcome back,</p>
+            <h1 className="text-xl font-semibold mt-0.5">{user.name ?? "User"}</h1>
           </div>
-          <div className="text-right">
-            <p className="text-slate-400 text-xs">{user.email}</p>
-            <p className="text-slate-500 text-xs mt-0.5">{new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}</p>
-          </div>
-        </div>
-
-        {/* Stat cards */}
-        <div className="grid grid-cols-4 gap-4 mb-8">
-          {[
-            { label: "Total Tasks", value: counts.all, accent: "#6366f1", icon: "📋" },
-            { label: "To Do", value: counts.todo, accent: "#94a3b8", icon: "⏳" },
-            { label: "In Progress", value: counts["in-progress"], accent: "#818cf8", icon: "🔄" },
-            { label: "Completed", value: counts.done, accent: "#34d399", icon: "✅" },
-          ].map((stat) => (
-            <div key={stat.label} className="bg-[#13141b] rounded-2xl p-5 border border-white/5">
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-xl">{stat.icon}</span>
-                <span className="text-xs text-slate-500 font-medium uppercase tracking-wider">{stat.label}</span>
-              </div>
-              <p className="text-3xl font-bold" style={{ color: stat.accent }}>{stat.value}</p>
-              <div className="mt-2 h-1 rounded-full bg-white/5">
-                <div className="h-1 rounded-full" style={{ width: `${(stat.value / counts.all) * 100}%`, backgroundColor: stat.accent }} />
-              </div>
+          <div className="flex items-center gap-3">
+            <div className="text-right hidden sm:block">
+              <p className="text-slate-400 text-xs">{user.email}</p>
+              <p className="text-slate-600 text-xs">{new Date().toLocaleDateString("en-US", { weekday: "long", month: "short", day: "numeric" })}</p>
             </div>
-          ))}
+            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-sm font-bold">
+              {(user.name?.[0] ?? "U").toUpperCase()}
+            </div>
+          </div>
+        </header>
+
+        {/* Stats */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 stagger">
+
+          {/* Circular progress */}
+          <div className="bg-[#13141d] border border-white/[0.05] rounded-2xl p-5 flex items-center gap-4">
+            <div className="relative w-14 h-14 shrink-0">
+              <svg width="56" height="56" className="progress-ring">
+                <circle cx="28" cy="28" r="22" fill="none" stroke="#1e2030" strokeWidth="5" />
+                <circle cx="28" cy="28" r="22" fill="none" stroke="#6366f1" strokeWidth="5"
+                  strokeDasharray={`${2 * Math.PI * 22}`}
+                  strokeDashoffset={`${2 * Math.PI * 22 * (1 - pct / 100)}`}
+                  strokeLinecap="round"
+                  style={{ transition: "stroke-dashoffset 1s ease" }}
+                />
+              </svg>
+              <span className="absolute inset-0 flex items-center justify-center text-xs font-bold text-indigo-400">{pct}%</span>
+            </div>
+            <div>
+              <p className="text-slate-500 text-xs mb-0.5">Progress</p>
+              <p className="text-white font-semibold text-sm">{completed}/{total} done</p>
+            </div>
+          </div>
+
+          <div className="bg-[#13141d] border border-white/[0.05] rounded-2xl p-5">
+            <p className="text-slate-500 text-xs uppercase tracking-wider mb-2">Total</p>
+            <p className="text-3xl font-bold text-white">{total}</p>
+            <p className="text-slate-600 text-xs mt-1">all tasks</p>
+          </div>
+
+          <div className="bg-[#13141d] border border-white/[0.05] rounded-2xl p-5">
+            <p className="text-slate-500 text-xs uppercase tracking-wider mb-2">Pending</p>
+            <p className="text-3xl font-bold text-amber-400">{pending}</p>
+            <p className="text-slate-600 text-xs mt-1">not completed</p>
+          </div>
+
+          <div className="bg-[#13141d] border border-white/[0.05] rounded-2xl p-5">
+            <p className="text-slate-500 text-xs uppercase tracking-wider mb-2">Overdue</p>
+            <p className="text-3xl font-bold text-rose-400">{overdue}</p>
+            <p className="text-slate-600 text-xs mt-1">past due date</p>
+          </div>
         </div>
 
         {/* Filters */}
-        <div className="flex items-center gap-3 mb-6 flex-wrap">
-          <div className="flex-1 min-w-48 relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-sm">🔍</span>
+        <div className="flex flex-wrap items-center gap-3 mb-5">
+          <div className="relative flex-1 min-w-48">
+            <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 text-sm">🔍</span>
             <input
               type="text"
-              placeholder="Search tasks..."
+              placeholder="Search by title or description…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-[#13141b] border border-white/5 rounded-xl pl-9 pr-4 py-2.5 text-sm text-white placeholder-slate-500 outline-none focus:border-indigo-500/50"
+              className="w-full bg-[#13141d] border border-white/[0.06] rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-slate-600 focus:border-indigo-500/40"
             />
           </div>
 
-          <div className="flex gap-2">
-            {(["all", "todo", "in-progress", "done"] as const).map((s) => (
-              <button
-                key={s}
-                onClick={() => setFilterStatus(s)}
-                className={`pill px-3 py-2 rounded-xl text-xs font-medium border ${filterStatus === s ? "bg-indigo-600 border-indigo-500 text-white" : "bg-[#13141b] border-white/5 text-slate-400"}`}
-              >
-                {s === "all" ? "All" : statusConfig[s as Status]?.label}
+          {/* Completion filter */}
+          <div className="flex gap-1 bg-[#13141d] border border-white/[0.06] rounded-xl p-1">
+            {(["all", "pending", "completed"] as const).map((v) => (
+              <button key={v} onClick={() => setFilterCompleted(v)}
+                className={`pill px-3 py-1.5 rounded-lg text-xs font-medium capitalize ${filterCompleted === v ? "bg-indigo-600 text-white" : "text-slate-500 hover:text-slate-300"}`}>
+                {v}
               </button>
             ))}
           </div>
 
-          <div className="flex gap-2">
-            {(["all", "high", "medium", "low"] as const).map((p) => (
-              <button
-                key={p}
-                onClick={() => setFilterPriority(p)}
-                className={`pill px-3 py-2 rounded-xl text-xs font-medium border ${filterPriority === p ? "bg-indigo-600 border-indigo-500 text-white" : "bg-[#13141b] border-white/5 text-slate-400"}`}
-              >
-                {p === "all" ? "Any Priority" : priorityConfig[p as Priority].label}
+          {/* Priority filter */}
+          <div className="flex gap-1 bg-[#13141d] border border-white/[0.06] rounded-xl p-1">
+            {(["all", "high", "medium", "low"] as const).map((v) => (
+              <button key={v} onClick={() => setFilterPriority(v)}
+                className={`pill px-3 py-1.5 rounded-lg text-xs font-medium capitalize ${filterPriority === v ? "bg-indigo-600 text-white" : "text-slate-500 hover:text-slate-300"}`}>
+                {v === "all" ? "All Priority" : v}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Task count */}
-        <p className="text-slate-500 text-xs mb-4">{filtered.length} task{filtered.length !== 1 ? "s" : ""} found</p>
+        <p className="text-slate-600 text-xs mb-4">{filtered.length} task{filtered.length !== 1 ? "s" : ""}</p>
 
         {/* Task Grid */}
         {filtered.length === 0 ? (
-          <div className="text-center py-20 text-slate-500">
-            <p className="text-4xl mb-3">🗂️</p>
+          <div className="text-center py-24 text-slate-600">
+            <p className="text-5xl mb-4">🗂️</p>
             <p className="text-sm">No tasks match your filters.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-            {filtered.map((task, i) => {
-              const p = priorityConfig[task.priority];
-              const s = statusConfig[task.status];
-              const isOverdue = new Date(task.dueDate) < new Date() && task.status !== "done";
+          <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 stagger">
+            {filtered.map((task) => {
+              const p   = priorityConfig[task.priority];
+              const due = isOverdue(task.dueDate, task.completed);
               return (
-                <div
-                  key={task.id}
-                  className="task-card bg-[#13141b] border border-white/5 rounded-2xl p-5 cursor-pointer"
-                  style={{ animationDelay: `${i * 0.04}s` }}
-                  onClick={() => setSelectedTask(task)}
-                >
-                  <div className="flex items-start justify-between mb-3">
-                    <span className={`${s.bg} ${s.text} text-xs px-2.5 py-1 rounded-lg font-medium`}>{s.label}</span>
-                    <span className={`flex items-center gap-1.5 text-xs font-medium ${p.color}`}>
+                <div key={task._id} onClick={() => setSelectedTask(task)}
+                  className="card bg-[#13141d] border border-white/[0.05] rounded-2xl p-5 flex flex-col gap-3">
+
+                  {/* Badges */}
+                  <div className="flex items-center justify-between">
+                    <span className={`flex items-center gap-1.5 text-xs font-medium ring-1 px-2.5 py-1 rounded-lg ${p.color} ${p.ring} bg-white/[0.03]`}>
                       <span className={`w-1.5 h-1.5 rounded-full ${p.dot}`} />
                       {p.label}
                     </span>
-                  </div>
-
-                  <h3 className="text-sm font-semibold text-white mb-1.5 leading-snug">{task.title}</h3>
-                  <p className="text-slate-500 text-xs leading-relaxed mb-4 line-clamp-2">{task.description}</p>
-
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="bg-white/5 text-slate-400 px-2 py-1 rounded-lg">{task.category}</span>
-                    <span className={isOverdue ? "text-rose-400 font-medium" : "text-slate-500"}>
-                      {isOverdue ? "⚠️ " : "📅 "}
-                      {new Date(task.dueDate).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                    <span className={`text-xs px-2.5 py-1 rounded-lg font-medium ${task.completed ? "bg-emerald-900/50 text-emerald-400" : "bg-slate-800 text-slate-400"}`}>
+                      {task.completed ? "✓ Done" : "Pending"}
                     </span>
                   </div>
 
-                  <div className="mt-3 pt-3 border-t border-white/5 flex items-center gap-2">
-                    <div className="w-5 h-5 rounded-full bg-indigo-600 flex items-center justify-center text-[10px] font-bold">
-                      {task.assignee[0]}
-                    </div>
-                    <span className="text-slate-500 text-xs">{task.assignee}</span>
+                  {/* Title */}
+                  <h3 className={`text-sm font-semibold leading-snug ${task.completed ? "line-through text-slate-500" : "text-white"}`}>
+                    {task.title}
+                  </h3>
+
+                  {/* Description */}
+                  {task.description && (
+                    <p className="text-slate-500 text-xs leading-relaxed line-clamp-2">{task.description}</p>
+                  )}
+
+                  {/* Footer */}
+                  <div className="flex items-center justify-between text-xs pt-3 border-t border-white/[0.04] mt-auto">
+                    <span className="text-slate-700" style={{ fontFamily: "DM Mono, monospace" }}>
+                      #{task._id.slice(-6)}
+                    </span>
+                    {task.dueDate ? (
+                      <span className={due ? "text-rose-400 font-medium" : "text-slate-500"}>
+                        {due ? "⚠ " : "📅 "}{formatDate(task.dueDate)}
+                      </span>
+                    ) : (
+                      <span className="text-slate-700 italic">No due date</span>
+                    )}
                   </div>
                 </div>
               );
             })}
           </div>
         )}
-      </div>
+      </main>
 
       {/* Detail Modal */}
       {selectedTask && (
-        <div
-          className="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedTask(null)}
-        >
-          <div
-            className="modal-box bg-[#13141b] border border-white/10 rounded-2xl w-full max-w-md p-6"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-start justify-between mb-4">
-              <div className="flex gap-2">
-                <span className={`${statusConfig[selectedTask.status].bg} ${statusConfig[selectedTask.status].text} text-xs px-2.5 py-1 rounded-lg font-medium`}>
-                  {statusConfig[selectedTask.status].label}
-                </span>
-                <span className={`flex items-center gap-1.5 text-xs font-medium ${priorityConfig[selectedTask.priority].color}`}>
+        <div className="overlay fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedTask(null)}>
+          <div className="modal bg-[#13141d] border border-white/10 rounded-2xl w-full max-w-md p-6 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}>
+
+            <div className="flex items-start justify-between mb-5">
+              <div className="flex gap-2 flex-wrap">
+                <span className={`flex items-center gap-1.5 text-xs font-medium ring-1 px-2.5 py-1 rounded-lg ${priorityConfig[selectedTask.priority].color} ${priorityConfig[selectedTask.priority].ring} bg-white/[0.03]`}>
                   <span className={`w-1.5 h-1.5 rounded-full ${priorityConfig[selectedTask.priority].dot}`} />
-                  {priorityConfig[selectedTask.priority].label}
+                  {priorityConfig[selectedTask.priority].label} Priority
+                </span>
+                <span className={`text-xs px-2.5 py-1 rounded-lg font-medium ${selectedTask.completed ? "bg-emerald-900/50 text-emerald-400" : "bg-slate-800 text-slate-400"}`}>
+                  {selectedTask.completed ? "✓ Completed" : "Pending"}
                 </span>
               </div>
-              <button onClick={() => setSelectedTask(null)} className="text-slate-500 hover:text-white transition-colors text-lg">✕</button>
+              <button onClick={() => setSelectedTask(null)} className="text-slate-600 hover:text-white transition-colors ml-3 text-lg leading-none">✕</button>
             </div>
 
-            <h2 className="text-lg font-semibold mb-2">{selectedTask.title}</h2>
-            <p className="text-slate-400 text-sm leading-relaxed mb-5">{selectedTask.description}</p>
+            <h2 className={`text-base font-semibold mb-2 ${selectedTask.completed ? "line-through text-slate-400" : "text-white"}`}>
+              {selectedTask.title}
+            </h2>
 
+            {selectedTask.description
+              ? <p className="text-slate-400 text-sm leading-relaxed mb-5">{selectedTask.description}</p>
+              : <p className="text-slate-600 text-sm italic mb-5">No description provided.</p>
+            }
+
+            {/* Meta fields — directly from schema */}
             <div className="grid grid-cols-2 gap-3">
               {[
-                { label: "Category", value: selectedTask.category },
-                { label: "Assignee", value: selectedTask.assignee },
-                { label: "Due Date", value: new Date(selectedTask.dueDate).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) },
-                { label: "Task ID", value: `#${String(selectedTask.id).padStart(4, "0")}` },
+                { label: "Task ID",    value: `#${selectedTask._id.slice(-6)}`,                              mono: true  },
+                { label: "Completed",  value: selectedTask.completed ? "Yes" : "No"                                      },
+                { label: "Due Date",   value: selectedTask.dueDate ? formatDate(selectedTask.dueDate) : "—"               },
+                { label: "Priority",   value: priorityConfig[selectedTask.priority].label                                 },
+                { label: "Created At", value: formatDate(selectedTask.createdAt)                                          },
+                { label: "Updated At", value: formatDate(selectedTask.updatedAt)                                          },
               ].map((item) => (
-                <div key={item.label} className="bg-white/5 rounded-xl p-3">
+                <div key={item.label} className="bg-white/[0.03] border border-white/[0.04] rounded-xl p-3">
                   <p className="text-slate-500 text-xs mb-1">{item.label}</p>
-                  <p className="text-white text-sm font-medium">{item.value}</p>
+                  <p className={`text-white text-sm font-medium ${item.mono ? "font-mono" : ""}`}>{item.value}</p>
                 </div>
               ))}
             </div>
+
+            {isOverdue(selectedTask.dueDate, selectedTask.completed) && (
+              <div className="mt-4 bg-rose-500/10 border border-rose-500/20 rounded-xl px-4 py-3 text-rose-400 text-xs">
+                ⚠️ This task is past its due date.
+              </div>
+            )}
           </div>
         </div>
       )}
