@@ -81,19 +81,29 @@ function Dashboard() {
                         />
                     </div>
 
+                    {/* Completion filter */}
                     <div className="flex gap-1 bg-[#13141d] border border-white/6 rounded-xl p-1">
-                        {["All", "Pending", "Completed"].map((item) => (
-                            <button
-                                key={item}
-                                className={`pill px-3 py-1.5 rounded-lg text-xs font-medium capitalize bg-(--color-primary) text-white`}>
-                                {item}
+                        {(["all", "pending", "completed"] as const).map((v) => (
+                            <button key={v}
+                                className={`pill px-3 py-1.5 rounded-lg text-xs font-medium capitalize ${"all" === v ? "bg-indigo-600 text-white" : "text-slate-500 hover:text-slate-300"}`}>
+                                {v}
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* Priority filter */}
+                    <div className="flex gap-1 bg-[#13141d] border border-white/6 rounded-xl p-1">
+                        {(["all", "high", "medium", "low"] as const).map((v) => (
+                            <button key={v} 
+                                className={`pill px-3 py-1.5 rounded-lg text-xs font-medium capitalize ${"all" === v ? "bg-indigo-600 text-white" : "text-slate-500 hover:text-slate-300"}`}>
+                                {v === "all" ? "All Priority" : v}
                             </button>
                         ))}
                     </div>
 
                 </div>
-            </main>
-        </div>
+            </main >
+        </div >
     )
 }
 
