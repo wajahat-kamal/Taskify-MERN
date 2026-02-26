@@ -102,7 +102,7 @@ function Dashboard() {
                     <div className="flex gap-1 bg-[#13141d] border border-white/6 rounded-xl p-1">
                         {(["all", "pending", "completed"] as const).map((item) => (
                             <button key={item} onClick={() => setFilterCompleted(item)}
-                                className={`pill px-3 py-1.5 rounded-lg text-xs font-medium capitalize ${filterCompleted === item ? "bg-(--color-primary) text-white" : "text-slate-500 hover:text-slate-300"}`}>
+                                className={`cursor-pointer pill px-3 py-1.5 rounded-lg text-xs font-medium capitalize ${filterCompleted === item ? "bg-(--color-primary) text-white" : "text-slate-500 hover:text-slate-300"}`}>
                                 {item}
                             </button>
                         ))}
@@ -112,7 +112,7 @@ function Dashboard() {
                     <div className="flex gap-1 bg-[#13141d] border border-white/6 rounded-xl p-1">
                         {(["all", "high", "medium", "low"] as const).map((item) => (
                             <button key={item} onClick={() => setFilterPriority(item)}
-                                className={`pill px-3 py-1.5 rounded-lg text-xs font-medium capitalize ${filterPriority === item ? "bg-(--color-primary) text-white" : "text-slate-500 hover:text-slate-300"}`}>
+                                className={`cursor-pointer pill px-3 py-1.5 rounded-lg text-xs font-medium capitalize ${filterPriority === item ? "bg-(--color-primary) text-white" : "text-slate-500 hover:text-slate-300"}`}>
                                 {item === "all" ? "All Priority" : item}
                             </button>
                         ))}
