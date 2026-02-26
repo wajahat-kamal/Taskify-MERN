@@ -23,8 +23,7 @@ function page() {
                         <h1 className="text-2xl font-semibold tracking-tight">{user?.name} 👋</h1>
                     </div>
                     <div className="text-right">
-                        <p className="text-slate-400 text-xs">{user?.email}</p>
-                        <p className="text-slate-500 text-xs mt-0.5">{new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}</p>
+                        <p className="text-slate-500 text-sm mt-1">{new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}</p>
                     </div>
                 </header>
             </main>
