@@ -30,9 +30,8 @@ function page() {
                 </header>
 
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 stagger">
-
                     {/* Circular progress */}
-                    <div className="bg-[#13141d] border border-white/[0.05] rounded-2xl p-5 flex items-center gap-4">
+                    <div className="bg-[#13141d] border border-white/5 rounded-2xl p-5 flex items-center gap-4">
                         <div className="relative w-14 h-14 shrink-0">
                             <svg width="56" height="56" className="progress-ring">
                                 <circle cx="28" cy="28" r="22" fill="none" stroke="#1e2030" strokeWidth="5" />
@@ -50,8 +49,6 @@ function page() {
                             <p className="text-white font-semibold text-sm">2/8 done</p>
                         </div>
                     </div>
-
-                    
 
                     {[
                         { title: "Total", numbers: 8, para: "all tasks", numColor: "text-white"},
