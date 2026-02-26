@@ -61,24 +61,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div style={{ fontFamily: "'DM Sans', 'Segoe UI', sans-serif" }} className="min-h-screen bg-[#0e0f14] text-white">
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
-        * { box-sizing: border-box; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #0e0f14; }
-        ::-webkit-scrollbar-thumb { background: #2a2d3a; border-radius: 3px; }
-        .task-card { transition: all 0.18s ease; }
-        .task-card:hover { transform: translateY(-2px); background: #1c1f2e !important; }
-        .fade-in { animation: fadeIn 0.4s ease forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-        .pill { transition: all 0.15s ease; cursor: pointer; }
-        .pill:hover { opacity: 0.85; }
-        .modal-overlay { animation: overlayIn 0.2s ease; }
-        @keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }
-        .modal-box { animation: modalIn 0.25s cubic-bezier(0.34,1.56,0.64,1); }
-        @keyframes modalIn { from { opacity: 0; transform: scale(0.93) translateY(12px); } to { opacity: 1; transform: scale(1) translateY(0); } }
-      `}</style>
+    <div className="min-h-screen bg-[#0e0f14] text-white">
 
       {/* Sidebar */}
       <div className="fixed left-0 top-0 h-full w-16 bg-[#13141b] flex flex-col items-center py-6 gap-6 border-r border-white/5 z-10">
