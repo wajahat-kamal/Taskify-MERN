@@ -3,7 +3,7 @@ import React from 'react'
 import { RootState } from '@/store/store'
 import { useSelector } from 'react-redux'
 
-function page() {
+function Dashboard() {
     const { user } = useSelector((state: RootState) => state.auth)
 
     return (
@@ -83,4 +83,4 @@ function page() {
     )
 }
 
-export default page
+export default Dashboard
