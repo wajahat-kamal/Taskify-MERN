@@ -80,6 +80,13 @@ function Dashboard() {
                             className="w-full bg-[#13141d] border border-white/6 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-slate-600 focus:border-indigo-500/40"
                         />
                     </div>
+
+                    <div className="flex gap-1 bg-[#13141d] border border-white/[0.06] rounded-xl p-1">
+                        {["All", "Pending", "Completed"].map((item) => (
+                            <button key={item} className=''>{item}</button>
+                        ))}
+                    </div>
+
                 </div>
             </main>
         </div>
