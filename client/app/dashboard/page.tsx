@@ -9,6 +9,7 @@ function Dashboard() {
 
     const [search, setSearch] = useState("")
     const [filterCompleted, setFilterCompleted] = useState<"all" | "pending" | "completed">("all");
+    const [filterPriority, setFilterPriority] = useState<"all" | "high" | "medium" | "low">("all");
 
 
     return (
@@ -98,8 +99,8 @@ function Dashboard() {
                     {/* Priority filter */}
                     <div className="flex gap-1 bg-[#13141d] border border-white/6 rounded-xl p-1">
                         {(["all", "high", "medium", "low"] as const).map((item) => (
-                            <button key={item}
-                                className={`pill px-3 py-1.5 rounded-lg text-xs font-medium capitalize ${"all" === item ? "bg-(--color-primary) text-white" : "text-slate-500 hover:text-slate-300"}`}>
+                            <button key={item} onClick={() => setFilterPriority(item)}
+                                className={`pill px-3 py-1.5 rounded-lg text-xs font-medium capitalize ${filterPriority === item ? "bg-(--color-primary) text-white" : "text-slate-500 hover:text-slate-300"}`}>
                                 {item === "all" ? "All Priority" : item}
                             </button>
                         ))}
