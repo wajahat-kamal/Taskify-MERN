@@ -94,14 +94,17 @@ function Dashboard() {
                     {/* Priority filter */}
                     <div className="flex gap-1 bg-[#13141d] border border-white/6 rounded-xl p-1">
                         {(["all", "high", "medium", "low"] as const).map((item) => (
-                            <button key={item} 
+                            <button key={item}
                                 className={`pill px-3 py-1.5 rounded-lg text-xs font-medium capitalize ${"all" === item ? "bg-(--color-primary) text-white" : "text-slate-500 hover:text-slate-300"}`}>
                                 {item === "all" ? "All Priority" : item}
                             </button>
                         ))}
                     </div>
-
                 </div>
+
+                <p className="text-slate-600 text-xs mb-4">8 Tasks</p>
+
+
             </main >
         </div >
     )
