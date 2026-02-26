@@ -10,8 +10,17 @@ interface AuthState {
     loading: boolean;
 }
 
+const loadUser = (): User | null => {
+    try {
+        const serialized = localStorage.getItem("user")
+        return serialized ? JSON.parse(serialized) : null;
+    } catch (error) {
+        return null;
+    }
+}
+
 const initialState: AuthState = {
-    user: null,
+    user: loadUser(),
     loading: false
 }
 
@@ -21,12 +30,14 @@ const authSlice = createSlice({
     reducers: {
         setUser: (state, action: PayloadAction<User>) => {
             state.user = action.payload;
+            localStorage.setItem("user", JSON.stringify(action.payload))
         },
         setLoading: (state, action: PayloadAction<boolean>) => {
             state.loading = action.payload;
         },
         logout: (state) => {
             state.user = null;
+            localStorage.removeItem("user")
         }
     }
 })
