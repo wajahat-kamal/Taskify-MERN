@@ -1,3 +1,4 @@
+"use client"
 import { useState } from "react";
 
 type Priority = "high" | "medium" | "low";
@@ -26,15 +27,15 @@ const mockTasks: Task[] = [
 ];
 
 const priorityConfig: Record<Priority, { label: string; color: string; dot: string }> = {
-  high:   { label: "High",   color: "text-rose-400",   dot: "bg-rose-400" },
-  medium: { label: "Medium", color: "text-amber-400",  dot: "bg-amber-400" },
-  low:    { label: "Low",    color: "text-emerald-400", dot: "bg-emerald-400" },
+  high: { label: "High", color: "text-rose-400", dot: "bg-rose-400" },
+  medium: { label: "Medium", color: "text-amber-400", dot: "bg-amber-400" },
+  low: { label: "Low", color: "text-emerald-400", dot: "bg-emerald-400" },
 };
 
 const statusConfig: Record<Status, { label: string; bg: string; text: string }> = {
-  "todo":        { label: "To Do",       bg: "bg-slate-700",   text: "text-slate-300" },
-  "in-progress": { label: "In Progress", bg: "bg-indigo-900",  text: "text-indigo-300" },
-  "done":        { label: "Done",        bg: "bg-emerald-900", text: "text-emerald-300" },
+  "todo": { label: "To Do", bg: "bg-slate-700", text: "text-slate-300" },
+  "in-progress": { label: "In Progress", bg: "bg-indigo-900", text: "text-indigo-300" },
+  "done": { label: "Done", bg: "bg-emerald-900", text: "text-emerald-300" },
 };
 
 export default function Dashboard() {
@@ -108,10 +109,10 @@ export default function Dashboard() {
         {/* Stat cards */}
         <div className="grid grid-cols-4 gap-4 mb-8">
           {[
-            { label: "Total Tasks",   value: counts.all,            accent: "#6366f1", icon: "📋" },
-            { label: "To Do",         value: counts.todo,           accent: "#94a3b8", icon: "⏳" },
-            { label: "In Progress",   value: counts["in-progress"], accent: "#818cf8", icon: "🔄" },
-            { label: "Completed",     value: counts.done,           accent: "#34d399", icon: "✅" },
+            { label: "Total Tasks", value: counts.all, accent: "#6366f1", icon: "📋" },
+            { label: "To Do", value: counts.todo, accent: "#94a3b8", icon: "⏳" },
+            { label: "In Progress", value: counts["in-progress"], accent: "#818cf8", icon: "🔄" },
+            { label: "Completed", value: counts.done, accent: "#34d399", icon: "✅" },
           ].map((stat) => (
             <div key={stat.label} className="bg-[#13141b] rounded-2xl p-5 border border-white/5">
               <div className="flex items-center justify-between mb-3">
@@ -246,10 +247,10 @@ export default function Dashboard() {
 
             <div className="grid grid-cols-2 gap-3">
               {[
-                { label: "Category",  value: selectedTask.category },
-                { label: "Assignee",  value: selectedTask.assignee },
-                { label: "Due Date",  value: new Date(selectedTask.dueDate).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) },
-                { label: "Task ID",   value: `#${String(selectedTask.id).padStart(4, "0")}` },
+                { label: "Category", value: selectedTask.category },
+                { label: "Assignee", value: selectedTask.assignee },
+                { label: "Due Date", value: new Date(selectedTask.dueDate).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) },
+                { label: "Task ID", value: `#${String(selectedTask.id).padStart(4, "0")}` },
               ].map((item) => (
                 <div key={item.label} className="bg-white/5 rounded-xl p-3">
                   <p className="text-slate-500 text-xs mb-1">{item.label}</p>
