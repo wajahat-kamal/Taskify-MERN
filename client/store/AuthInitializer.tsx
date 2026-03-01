@@ -1,8 +1,8 @@
+"use client"
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "./slices/authSlice";
-import { IUser } from "@/types/userTypes";
 
 function AuthInitializer() {
   const dispatch = useDispatch();
