@@ -26,7 +26,7 @@ function Dashboard() {
 
     const getStats = async () => {
         try {
-            const {data} = await axios.get("http://localhost:5000/tasks/task-stats", {
+            const {data} = await axios.get("http://localhost:8000/tasks/task-stats", {
                 withCredentials: true,
             });
             setStats(data.stats);
@@ -107,7 +107,7 @@ function Dashboard() {
                         { title: "Completed", numbers: stats.completedTasks, para: "completed", numColor: "text-green-400" },
                         { title: "Overdue", numbers: 4, para: "past due date", numColor: "text-rose-400" },
                     ].map((item) => (
-                        <div className="bg-[#13141d] border border-white/5 rounded-2xl p-5">
+                        <div key={item.title} className="bg-[#13141d] border border-white/5 rounded-2xl p-5">
                             <p className="text-slate-500 text-xs uppercase tracking-wider mb-2">{item.title}</p>
                             <p className={`text-3xl font-bold ${item.numColor}`}>{item.numbers}</p>
                             <p className="text-slate-600 text-xs mt-1">{item.para}</p>
