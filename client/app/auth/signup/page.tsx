@@ -33,8 +33,8 @@ export default function SignupPage() {
         dispatch(setLoading(true))
         try {
             const { data } = await axios.post(
-                // `${process.env.NEXT_PUBLIC_API_URL}/auth/register`,
-                "http://localhost:8000/auth/register",
+                // `${process.env.NEXT_PUBLIC_API_URL}/api/auth/register`,
+                "http://localhost:8000/api/auth/register",
                 form
             );
 

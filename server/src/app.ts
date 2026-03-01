@@ -17,8 +17,8 @@ app.use(cors({
     credentials: true
 }))
 
-app.use('/auth', authRouter);
-app.use('/tasks', protect, taskRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/tasks', protect, taskRouter);
 
 app.get("/", (req, res) => {
     res.status(200).json({

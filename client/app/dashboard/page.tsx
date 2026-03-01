@@ -26,7 +26,7 @@ function Dashboard() {
 
     const getStats = async () => {
         try {
-            const {data} = await axios.get("http://localhost:8000/tasks/task-stats", {
+            const {data} = await axios.get("http://localhost:8000/api/tasks/task-stats", {
                 withCredentials: true,
             });
             setStats(data.stats);
