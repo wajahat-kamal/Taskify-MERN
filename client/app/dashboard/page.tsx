@@ -30,20 +30,18 @@ function Dashboard() {
 
     const getStats = async () => {
         try {
-            const {data} = await axios.get("http://localhost:5000/tasks/task-stats")
-
-            setStats(data.stats)
+            const {data} = await axios.get("http://localhost:5000/tasks/task-stats", {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            });
+            setStats(data.stats);
         } catch (error) {
-            console.error("Error in getStats:", error)
-            toast.error("Error in fetching task stats")
-            setStats({
-                totalTasks: 0,
-                pendingTasks: 0,
-                completedTasks: 0
-            })
+            console.error("Error in getStats:", error);
+            toast.error("Error in fetching task stats");
+            setStats({ totalTasks: 0, pendingTasks: 0, completedTasks: 0 });
         }
-    }
-
+    };
     return (
         <div className='bg-[#0e0f14] min-h-screen text-white'>
             <aside className="fixed left-0 top-0 h-full w-16 bg-[#13141b] flex flex-col justify-between items-center py-6 gap-6 border-r border-white/5 z-10">
