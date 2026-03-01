@@ -31,9 +31,7 @@ function Dashboard() {
     const getStats = async () => {
         try {
             const {data} = await axios.get("http://localhost:5000/tasks/task-stats", {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
-                }
+                withCredentials: true,
             });
             setStats(data.stats);
         } catch (error) {
