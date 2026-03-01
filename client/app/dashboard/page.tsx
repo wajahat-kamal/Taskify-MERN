@@ -51,7 +51,7 @@ function Dashboard() {
                 </header>
 
                 {/* Stats */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 stagger">
+                <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8 stagger">
                     {/* Circular progress */}
                     <div className="bg-[#13141d] border border-white/5 rounded-2xl p-5 flex items-center gap-4">
                         <div className="relative w-14 h-14 shrink-0">
@@ -73,9 +73,10 @@ function Dashboard() {
                     </div>
 
                     {[
-                        { title: "Total", numbers: 8, para: "all tasks", numColor: "text-white" },
+                        { title: "Total", numbers: 9, para: "all tasks", numColor: "text-white" },
                         { title: "Pending", numbers: 2, para: "not completed", numColor: "text-amber-400" },
-                        { title: "Overdue", numbers: 6, para: "past due date", numColor: "text-rose-400" },
+                        { title: "Completed", numbers: 3, para: "completed", numColor: "text-green-400" },
+                        { title: "Overdue", numbers: 4, para: "past due date", numColor: "text-rose-400" },
                     ].map((item) => (
                         <div className="bg-[#13141d] border border-white/5 rounded-2xl p-5">
                             <p className="text-slate-500 text-xs uppercase tracking-wider mb-2">{item.title}</p>

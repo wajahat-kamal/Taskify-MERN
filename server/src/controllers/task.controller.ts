@@ -104,3 +104,27 @@ export async function updateTask(req: Request<{ id: string }>, res: Response) {
         });
     }
 }
+
+export async function getTaskStats(req: Request, res: Response) {
+    try {
+        const totalTasks = await Task.countDocuments({ userId: req.user._id })
+        const pendingTasks = await Task.countDocuments({ userId: req.user._id, completed: false })
+        const completedTasks = await Task.countDocuments({ userId: req.user._id, completed: true })
+
+        return res.status(200).json({
+            success: true,
+            stats: {
+                totalTasks,
+                pendingTasks,
+                completedTasks
+            }
+        })
+    } catch (error) {
+        console.error("Error in getTaskStats:", error);
+
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error in fetching task stats"
+        });
+    }
+}
