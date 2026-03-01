@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import Image from 'next/image'
 import { Plus } from 'lucide-react'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 function Dashboard() {
     const { user } = useSelector((state: RootState) => state.auth)
@@ -31,9 +32,15 @@ function Dashboard() {
         try {
             const {data} = await axios.get("http://localhost:5000/tasks/task-stats")
 
-            console.log(data)
+            setStats(data.stats)
         } catch (error) {
-            
+            console.error("Error in getStats:", error)
+            toast.error("Error in fetching task stats")
+            setStats({
+                totalTasks: 0,
+                pendingTasks: 0,
+                completedTasks: 0
+            })
         }
     }
 
