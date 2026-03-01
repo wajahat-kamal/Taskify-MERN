@@ -12,6 +12,13 @@ function Dashboard() {
     const [filterCompleted, setFilterCompleted] = useState<"all" | "pending" | "completed">("all");
     const [filterPriority, setFilterPriority] = useState<"all" | "high" | "medium" | "low">("all");
 
+    const getStats = async () => {
+        try {
+            const {data}
+        } catch (error) {
+            
+        }
+    }
 
     return (
         <div className='bg-[#0e0f14] min-h-screen text-white'>
