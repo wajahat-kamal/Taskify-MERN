@@ -34,8 +34,9 @@ export default function SignupPage() {
         try {
             const { data } = await axios.post(
                 // `${process.env.NEXT_PUBLIC_API_URL}/api/auth/register`,
-                "http://localhost:8000/api/auth/register",
-                form
+                "/api/auth/register",
+                form,
+                {withCredentials: true}
             );
 
             if (data.success) {
