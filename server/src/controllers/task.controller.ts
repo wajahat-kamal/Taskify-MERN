@@ -107,16 +107,24 @@ export async function updateTask(req: Request<{ id: string }>, res: Response) {
 
 export async function getTaskStats(req: Request, res: Response) {
     try {
-        const totalTasks = await Task.countDocuments({ userId: req.user._id })
-        const pendingTasks = await Task.countDocuments({ userId: req.user._id, completed: false })
-        const completedTasks = await Task.countDocuments({ userId: req.user._id, completed: true })
+        const stats = await Task.aggregate([
+            { $match: {userId: req.user._id}},
+            {
+                $group: {
+                    _id: null,
+                    totalTasks: { $sum: 1 },
+                    completedTasks: { $sum: { $cond: ["completed", 1, 0] } },
+                    pendingTasks: { $sum: { $cond: ["completed", 0, 1] } },
+                }
+            }
+        ])
 
         return res.status(200).json({
             success: true,
             stats: {
-                totalTasks,
-                pendingTasks,
-                completedTasks
+                stats.totalTasks,
+                stats.pendingTasks,
+                stats.completedTasks
             }
         })
     } catch (error) {
