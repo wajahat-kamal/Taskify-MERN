@@ -24,10 +24,6 @@ function Dashboard() {
         completedTasks: 0
     })
 
-    useEffect(() => {
-        getStats()
-    }, [])
-
     const getStats = async () => {
         try {
             const {data} = await axios.get("http://localhost:5000/tasks/task-stats", {
@@ -40,6 +36,12 @@ function Dashboard() {
             setStats({ totalTasks: 0, pendingTasks: 0, completedTasks: 0 });
         }
     };
+
+    useEffect(() => {
+        if (user) {
+            getStats()
+        }
+    }, [])
     return (
         <div className='bg-[#0e0f14] min-h-screen text-white'>
             <aside className="fixed left-0 top-0 h-full w-16 bg-[#13141b] flex flex-col justify-between items-center py-6 gap-6 border-r border-white/5 z-10">
