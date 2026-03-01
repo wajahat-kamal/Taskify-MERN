@@ -79,8 +79,8 @@ export async function deleteTask(req: Request<{ id: string }>, res: Response) {
 
 export async function updateTask(req: Request<{ id: string }>, res: Response) {
     try {
-        const task = await Task.findOne({_id: req.params.id, userId: req.user!._id})
-        
+        const task = await Task.findOne({ _id: req.params.id, userId: req.user!._id })
+
         if (!task) {
             return res.status(404).json({
                 success: false,
@@ -108,28 +108,29 @@ export async function updateTask(req: Request<{ id: string }>, res: Response) {
 export async function getTaskStats(req: Request, res: Response) {
     try {
         const stats = await Task.aggregate([
-            { $match: {userId: req.user._id}},
+            { $match: { userId: req.user._id } },
             {
                 $group: {
                     _id: null,
                     totalTasks: { $sum: 1 },
-                    completedTasks: { $sum: { $cond: ["completed", 1, 0] } },
-                    pendingTasks: { $sum: { $cond: ["completed", 0, 1] } },
+                    completedTasks: { $sum: { $cond: ["$completed", 1, 0] } },
+                    pendingTasks: { $sum: { $cond: ["$completed", 0, 1] } }
                 }
             }
-        ])
+        ]);
+
+        const result = stats[0] ?? { totalTasks: 0, completedTasks: 0, pendingTasks: 0 };
 
         return res.status(200).json({
             success: true,
             stats: {
-                stats.totalTasks,
-                stats.pendingTasks,
-                stats.completedTasks
+                totalTasks: result.totalTasks,
+                completedTasks: result.completedTasks,
+                pendingTasks: result.pendingTasks
             }
-        })
+        });
     } catch (error) {
         console.error("Error in getTaskStats:", error);
-
         return res.status(500).json({
             success: false,
             message: "Internal server error in fetching task stats"
