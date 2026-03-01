@@ -11,7 +11,7 @@ function AuthInitializer() {
     axios
       .get(
         // `${process.env.NEXT_PUBLIC_API_URL}/api/auth/me`,
-        "http://localhost:8000/api/auth/me",
+        "/api/auth/me",
         { withCredentials: true }
       )
       .then((res) => dispatch(setUser(res.data.user)))
