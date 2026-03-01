@@ -1,9 +1,10 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { RootState } from '@/store/store'
 import { useSelector } from 'react-redux'
 import Image from 'next/image'
-import { Bell, Plus } from 'lucide-react'
+import { Plus } from 'lucide-react'
+import axios from 'axios'
 
 function Dashboard() {
     const { user } = useSelector((state: RootState) => state.auth)
@@ -12,9 +13,25 @@ function Dashboard() {
     const [filterCompleted, setFilterCompleted] = useState<"all" | "pending" | "completed">("all");
     const [filterPriority, setFilterPriority] = useState<"all" | "high" | "medium" | "low">("all");
 
+    const [stats, setStats] = useState<{
+        totalTasks: number
+        pendingTasks: number
+        completedTasks: number
+    }>({
+        totalTasks: 0,
+        pendingTasks: 0,
+        completedTasks: 0
+    })
+
+    useEffect(() => {
+        getStats()
+    }, [])
+
     const getStats = async () => {
         try {
-            const {data}
+            const {data} = await axios.get("http://localhost:5000/tasks/task-stats")
+
+            console.log(data)
         } catch (error) {
             
         }
