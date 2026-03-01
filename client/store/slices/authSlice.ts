@@ -1,16 +1,12 @@
+import { IUser } from "@/types/userTypes";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface User {
-    name: string;
-    email: string;
-}
-
 interface AuthState {
-    user: User | null;
+    user: IUser | null;
     loading: boolean;
 }
 
-const loadUser = (): User | null => {
+const loadUser = (): IUser | null => {
     try {
         const serialized = localStorage.getItem("user")
         return serialized ? JSON.parse(serialized) : null;
@@ -28,7 +24,7 @@ const authSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
-        setUser: (state, action: PayloadAction<User>) => {
+        setUser: (state, action: PayloadAction<IUser>) => {
             state.user = action.payload;
             localStorage.setItem("user", JSON.stringify(action.payload))
         },

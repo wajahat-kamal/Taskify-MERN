@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "./slices/authSlice";
-import { IUser } from "@/types/userTypes";  
+import { IUser } from "@/types/userTypes";
 
 function AuthInitializer() {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ function AuthInitializer() {
         "http://localhost:8000/auth/me",
         { withCredentials: true }
       )
-      .then((res) => dispatch(setUser({ user: res.data.user as IUser })))
+      .then((res) => dispatch(setUser(res.data.user)))
       .catch(() => {
         // ignore if not logged in
       });
