@@ -8,22 +8,16 @@ import { nav_items } from '@/data/generalData';
 import Link from 'next/link';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '@/store/slices/authSlice';
-import { RootState } from "@/store/store";
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
-    const { user } = useSelector((state: RootState) => state.auth)
-    const dispatch = useDispatch()
 
     async function logoutHandler() {
         try {
             const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`)
             if (data.success) {
                 toast.success(data.message)
-                dispatch(logout())
             }
         } catch (error: any) {
             toast.error(error?.message)
@@ -42,7 +36,7 @@ function Navbar() {
                 {/* Logo */}
                 <Link href="/" className="text-[#656FE4] text-2xl font-extrabold tracking-widest flex justify-center items-center gap-2">
                     <Image src="/logo.png" width={40} height={40} className='rounded' alt="logo" />
-                    TASKIFY
+                    TaskFlow
                 </Link>
 
                 {/* Desktop Links */}
@@ -59,7 +53,7 @@ function Navbar() {
                     ))}
                 </ul>
 
-                {user ? (
+                {false ? (
                     <button
                         onClick={logoutHandler}
                         className="hidden md:inline-block bg-(--color-primary) text-white px-5 py-2 rounded-full border-2 hover:text-(--color-primary) hover:bg-[#000310] border-(--color-primary) transition"
@@ -104,7 +98,7 @@ function Navbar() {
                         </li>
                     ))}
 
-                    {/* ✅ Mobile Signup Button */}
+                    {/* Mobile Signup Button */}
                     <li className="mt-2">
                         <Link
                             href="/auth/login"
