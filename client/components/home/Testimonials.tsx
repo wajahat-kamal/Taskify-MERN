@@ -2,13 +2,13 @@
 import { testimonials } from "@/data/testimonials";
 import { motion } from "framer-motion";
 import TestimonialsCard from "./TestimonialsCard";
-import { fadeUp } from "./Hero";
+import { fadeUp } from "../resuable/FadeUpAnimation";
 
 export default function Testimonials() {
     return (
         <section
             id="testimonials"
-            className="relative bg-[#00030f] text-[#F0F4FF] overflow-hidden py-16 px-6"
+            className="relative bg-background text-[#F0F4FF] overflow-hidden py-16 px-6"
         >
             <div
                 className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-0.5 opacity-20"
@@ -35,7 +35,7 @@ export default function Testimonials() {
                         whileInView="visible"
                         viewport={{ once: true }}
                         custom={0.2}
-                        className="mt-4 text-[#6B7A99] max-w-[520px] mx-auto leading-[1.8] text-sm"
+                        className="mt-4 text-lightprimary max-w-[520px] mx-auto leading-[1.8] text-sm"
                     >
                         Don't take our word for it — here's what real teams say after switching to Taskify.
                     </motion.p>

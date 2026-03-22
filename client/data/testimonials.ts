@@ -1,4 +1,6 @@
-export const testimonials = [
+import { Testimonial } from "@/types/Testimonial";
+
+export const testimonials: Testimonial[] = [
     {
         name: "Sarah Mitchell",
         role: "Product Manager @ Notion",
@@ -42,11 +44,3 @@ export const testimonials = [
         text: "We evaluated 12 tools before choosing Taskify. Nothing else came close to the depth of AI features at this price point.",
     },
 ];
-
-export interface Testimonial {
-    name: string;
-    role: string;
-    color: string;
-    stars: number;
-    text: string;
-};

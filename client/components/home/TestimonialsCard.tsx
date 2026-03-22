@@ -1,10 +1,8 @@
-import { Testimonial } from "@/data/testimonials";
 import { Quote, Star } from "lucide-react";
 import { motion } from "framer-motion";
+import { Testimonial } from "@/types/Testimonial";
 
 function TestimonialCard({ testimonial, delay }: { testimonial: Testimonial; delay: number }) {
-
-
     return (
         <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -12,7 +10,7 @@ function TestimonialCard({ testimonial, delay }: { testimonial: Testimonial; del
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -6, scale: 1.02 }}
-            className="group relative bg-white/3 border border-white/8 hover:border-(--color-primary)/40 rounded-2xl p-6 backdrop-blur-sm transition-colors duration-300 flex flex-col gap-4 cursor-default"
+            className="group relative bg-white/3 border border-white/8 hover:border-primary/40 rounded-2xl p-6 backdrop-blur-sm transition-colors duration-300 flex flex-col gap-4 cursor-default"
         >
             {/* Hover glow */}
             <div
@@ -23,7 +21,7 @@ function TestimonialCard({ testimonial, delay }: { testimonial: Testimonial; del
             <div className="relative z-10 flex flex-col gap-4">
                 {/* Quote icon + stars */}
                 <div className="flex items-center justify-between">
-                    <Quote size={20} className="text-(--color-primary) opacity-60" />
+                    <Quote size={20} className="text-primary opacity-60" />
                     <div className="flex gap-0.5">
                         {Array.from({ length: testimonial.stars }).map((_, i) => (
                             <Star key={i} size={13} className="text-[#f59e0b] fill-[#f59e0b]" />
@@ -32,7 +30,7 @@ function TestimonialCard({ testimonial, delay }: { testimonial: Testimonial; del
                 </div>
 
                 {/* Text */}
-                <p className="text-[#9AAAC8] text-sm leading-[1.8] flex-1">
+                <p className="text-lightprimary text-sm leading-[1.8] flex-1">
                     "{testimonial.text}"
                 </p>
 
@@ -48,7 +46,7 @@ function TestimonialCard({ testimonial, delay }: { testimonial: Testimonial; del
                     </div>
                     <div>
                         <p className="text-[#F0F4FF] text-sm font-semibold leading-tight">{testimonial.name}</p>
-                        <p className="text-[#6B7A99] text-xs mt-0.5">{testimonial.role}</p>
+                        <p className="text-lightprimary text-xs mt-0.5">{testimonial.role}</p>
                     </div>
                 </div>
             </div>
