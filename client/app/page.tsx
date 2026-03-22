@@ -1,19 +1,9 @@
-import AboutSection from "@/components/AboutSection";
-import CTABanner from "@/components/CTABanner";
-import Footer from "@/components/Footer";
-import Hero from "@/components/Hero";
-import Navbar from "@/components/Navbar";
-import Testimonials from "@/components/Testimonials";
+import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="bg-[#000310]">
-      <Navbar />
-      <Hero />
-      <AboutSection/>
-      <Testimonials/>
-      <CTABanner/>
-      <Footer/>
-    </div>
+    <>
+      <h1>Hey</h1>
+    </>
   );
 }
