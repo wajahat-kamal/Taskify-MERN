@@ -85,7 +85,7 @@ export default function AboutSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.1 * i, ease: [0.22, 1, 0.36, 1] }}
-                            className="bg-[#00030f] flex flex-col items-center justify-center py-10 gap-1"
+                            className="bg-background flex flex-col items-center justify-center py-10 gap-1"
                         >
                             <span className="text-4xl font-extrabold tracking-tight" >
                                 {stat.value}
