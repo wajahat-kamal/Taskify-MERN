@@ -1,0 +1,101 @@
+"use client"
+import { motion } from "framer-motion";
+import { features, stats } from "@/data/generalData";
+import { fadeUp } from "../resuable/FadeUpAnimation";
+
+export default function AboutSection() {
+    return (
+        <section
+            id="about"
+            className="relative text-[#F0F4FF] overflow-hidden py-16 px-6"
+        >
+            <div
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-0.5 opacity-20"
+                style={{ background: "linear-gradient(90deg, transparent, #4f7eff, transparent)" }}
+            />
+
+            <div className="relative z-10 max-w-6xl mx-auto">
+                {/* Section header */}
+                <div className="text-center mb-16">
+                    <motion.h2
+                        variants={fadeUp}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        custom={0.1}
+                        className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.1] max-w-[700px] mx-auto"
+                    >
+                        Built for teams that move fast
+                    </motion.h2>
+
+                    <motion.p
+                        variants={fadeUp}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        custom={0.2}
+                        className="mt-4 text-lightprimary max-w-[520px] mx-auto leading-[1.8] text-sm"
+                    >
+                        Taskify was born from a simple frustration — too many tools, too little clarity.
+                        We built the AI-native workspace that keeps every team aligned without the noise.
+                    </motion.p>
+                </div>
+
+                {/* Feature cards */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
+                    {features.map((feature, i) => (
+                        <motion.div
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="visible"
+                            custom={0.1 * i}
+                            whileHover={{ y: -6, scale: 1.02 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                            key={feature.title}
+                            className="relative group bg-white/3 border border-white/8 hover:border-primary/40 rounded-2xl p-6 backdrop-blur-sm  transition-colors duration-300 cursor-default"
+                        >
+                            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                                style={{ background: "radial-gradient(circle at 50% 0%, rgba(79,126,255,0.08), transparent 70%)" }}
+                            />
+                            <div className="relative z-10">
+
+                                <div className="flex justify-center items-center w-10 h-10 bg-imary/10 rounded-xl border border-primary/20 mb-4">
+                                    <feature.icon size={18} className="text-primary" />
+                                </div>
+                                <h3 className="font-semibold text-base text-[#F0F4FF] mb-2">{feature.title}</h3>
+                                <p className="text-lightprimary leading-[1.7] text-sm">{feature.desc}</p>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+
+                {/* Stats row */}
+                <motion.div
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    custom={0.2}
+                    className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/6 rounded-2xl overflow-hidden border border-white/6"
+                >
+                    {stats.map((stat, i) => (
+                        <motion.div
+                            key={stat.label}
+                            initial={{ opacity: 0, y: 16 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.1 * i, ease: [0.22, 1, 0.36, 1] }}
+                            className="bg-[#00030f] flex flex-col items-center justify-center py-10 gap-1"
+                        >
+                            <span className="text-4xl font-extrabold tracking-tight" >
+                                {stat.value}
+                            </span>
+                            <span className="text-lightprimaryx text-sm">{stat.label}</span>
+                        </motion.div>
+                    ))}
+                </motion.div>
+
+            </div>
+        </section>
+    );
+}
