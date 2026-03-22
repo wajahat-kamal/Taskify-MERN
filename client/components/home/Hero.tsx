@@ -2,8 +2,8 @@
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { fadeUp } from "../resuable/FadeUpAnimation";
-import PrimaryButton from "./PrimaryButton";
-import DemoButton from "./DemoButton";
+import PrimaryButton from "../resuable/PrimaryButton";
+import DemoButton from "../resuable/DemoButton";
 
 export default function HeroSection() {
 

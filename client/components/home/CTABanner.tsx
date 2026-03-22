@@ -1,8 +1,8 @@
 "use client"
 import { motion } from "framer-motion";
 import { fadeUp } from "../resuable/FadeUpAnimation";
-import DemoButton from "./DemoButton";
-import PrimaryButton from "./PrimaryButton";
+import DemoButton from "../resuable/DemoButton";
+import PrimaryButton from "../resuable/PrimaryButton";
 
 export default function CTABanner() {
     return (
